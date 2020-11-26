@@ -35,7 +35,7 @@ sides_clean <- sides_clean %>%
          sugars_g_100g = sugars_g, fibre_g_100g = fibre_g, protein_g_100g = 
            protein_g, salt_g_100g = salt_g, sodium_g_100g = sodium_g,
          energy_kcal_serv = energy_kcal_2, energy_kj_serv = energy_k_j_2,
-         fat_g_serv = fat_g_2, sat_g_serv = fat_g_2, carb_g_serv = carb_g_2,
+         fat_g_serv = fat_g_2, sat_g_serv = sat_g_2, carb_g_serv = carb_g_2,
          sugars_g_serv = sugars_g_2, fibre_g_serv = fibre_g_2, protein_g_serv =
            protein_g_2, salt_g_serv = salt_g_2, sodium_g_serv = sodium_g_2)
 
@@ -47,6 +47,32 @@ sides_clean <- sides_clean %>%
   mutate(fibre_g_serv = as.numeric(gsub("<", "", fibre_g_serv))) %>%
   mutate(protein_g_serv = as.numeric(gsub("<", "", protein_g_serv))) %>%
   mutate(serves = as.factor(serves))
+
+
+# defining UK recommended daily allowances of nutrients
+rda_kcal <- 2000
+rda_fat <- 70
+rda_sat <- 20
+rda_carbs <- 260
+rda_sugar <- 90
+rda_protein <- 50
+rda_salt <- 6
+rda_sodium <- 2.4
+rda_fibre <- 30
+
+
+# add columns for %RDA per servings
+sides_clean <- sides_clean %>%
+  mutate(energy_kcal_rda = round((energy_kcal_serv / rda_kcal), 2)) %>%
+  mutate(fat_rda = round((fat_g_serv / rda_fat), 2)) %>%
+  mutate(sat_rda = round((sat_g_serv / rda_sat), 2)) %>%
+  mutate(carb_rda = round((carb_g_serv / rda_carbs), 2)) %>%
+  mutate(sugars_rda = round((sugars_g_serv / rda_sugar), 2)) %>%
+  mutate(fibre_rda = round((fibre_g_serv / rda_fibre), 2)) %>%
+  mutate(protein_rda = round((protein_g_serv / rda_protein), 2)) %>%
+  mutate(salt_rda = round((salt_g_serv / rda_salt), 2)) %>%
+  mutate(sodium_rda = round((sodium_g_serv / rda_sodium), 2))
+
 
 # save clean data
 write_csv(sides_clean, "clean_data/sides_clean.csv")
