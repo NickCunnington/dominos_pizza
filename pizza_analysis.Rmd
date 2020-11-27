@@ -14,6 +14,540 @@ library(tidyverse)
 pizza <- read_csv("clean_data/pizza_clean.csv")
 ```
 
+# Selecting only Medium sized pizzas to make sure I can get the most amount of types
+
+```{r}
+pizza_medium <- pizza %>%
+  filter(size == "Medium")
+```
+
+
+
+
+# Calories per 100g for each main crust type
+
+```{r}
+kcal_crust <- pizza_medium %>%
+  select(crust, energy_kcal_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+           crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_kcal = round(mean(energy_kcal_100g),0))
+kcal_crust
+```
+
+```{r}
+kcal_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_kcal)), y = average_kcal) +
+  geom_col(fill = "darkblue")
+```
+
+
+# Calories per 100g for each pizza name
+
+```{r}
+kcal_name <- pizza_medium %>%
+  select(name, energy_kcal_100g) %>%
+  group_by(name) %>%
+  summarise(average_kcal = round(mean(energy_kcal_100g),0))
+kcal_name
+```
+
+```{r}
+kcal_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_kcal)), y = average_kcal) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+
+# Fat per 100g for each crust type
+
+```{r}
+fat_crust <- pizza_medium %>%
+  select(crust, fat_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_fat = round(mean(fat_g_100g),1))
+fat_crust
+```
+
+```{r}
+fat_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_fat)), y = average_fat) +
+  geom_col(fill = "darkblue")
+```
+
+
+# Fat per 100g for each pizza name
+
+```{r}
+fat_name <- pizza_medium %>%
+  select(name, fat_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_fat = round(mean(fat_g_100g),1))
+fat_name
+```
+
+```{r}
+fat_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_fat)), y = average_fat) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# Sat Fat per 100g for crust type
+
+```{r}
+sat_crust <- pizza_medium %>%
+  select(crust, sat_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_sat = round(mean(sat_g_100g),1))
+sat_crust
+```
+
+```{r}
+sat_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_sat)), y = average_sat) +
+  geom_col(fill = "darkblue")
+```
+
+
+# Saturated Fat per 100g for pizza name
+
+```{r}
+sat_name <- pizza_medium %>%
+  select(name, sat_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_sat = round(mean(sat_g_100g),1))
+sat_name
+```
+
+```{r}
+sat_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_sat)), y = average_sat) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# Carbs per 100g for crust type
+
+```{r}
+carb_crust <- pizza_medium %>%
+  select(crust, carb_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_carbs = round(mean(carb_g_100g),1))
+carb_crust
+```
+
+```{r}
+carb_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_carbs)), y = average_carbs) +
+  geom_col(fill = "darkblue")
+```
+
+
+# Carbs per 100g for pizza name
+
+```{r}
+carb_name <- pizza_medium %>%
+  select(name, carb_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_carbs = round(mean(carb_g_100g),1))
+carb_name
+```
+
+```{r}
+carb_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_carbs)), y = average_carbs) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# Sugars per 100g for crust type
+
+```{r}
+sugar_crust <- pizza_medium %>%
+  select(crust, sugars_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_sugar = round(mean(sugars_g_100g),1))
+sugar_crust
+```
+
+```{r}
+sugar_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_sugar)), y = average_sugar) +
+  geom_col(fill = "darkblue")
+```
+
+
+# Sugars per 100g for pizza name
+
+```{r}
+sugar_name <- pizza_medium %>%
+  select(name, sugars_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_sugar = round(mean(sugars_g_100g),1))
+sugar_name
+```
+
+
+```{r}
+sugar_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_sugar)), y = average_sugar) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# Fibre per 100g for crust type
+
+```{r}
+fibre_crust <- pizza_medium %>%
+  select(crust, fibre_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_fibre = round(mean(fibre_g_100g),1))
+fibre_crust
+```
+
+```{r}
+fibre_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_fibre)), y = average_fibre) +
+  geom_col(fill = "darkblue")
+```
+
+# Fibre per 100g for pizza name
+
+```{r}
+fibre_name <- pizza_medium %>%
+  select(name, fibre_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_fibre = round(mean(fibre_g_100g),1))
+fibre_name
+```
+
+```{r}
+fibre_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_fibre)), y = average_fibre) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# Protein per 100g for crust type
+
+```{r}
+protein_crust <- pizza_medium %>%
+  select(crust, protein_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_protein = round(mean(protein_g_100g),1))
+protein_crust
+```
+
+```{r}
+protein_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_protein)), y = average_protein) +
+  geom_col(fill = "darkblue")
+```
+
+```{r}
+protein_name <- pizza_medium %>%
+  select(name, protein_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_protein = round(mean(protein_g_100g),1))
+protein_name
+```
+
+
+```{r}
+protein_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_protein)), y = average_protein) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# Salt per 100g per crust type
+
+```{r}
+salt_crust <- pizza_medium %>%
+  select(crust, salt_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_salt = round(mean(salt_g_100g),2))
+salt_crust
+```
+
+```{r}
+salt_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_salt)), y = average_salt) +
+  geom_col(fill = "darkblue")
+```
+
+```{r}
+salt_name <- pizza_medium %>%
+  select(name, salt_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_salt = round(mean(salt_g_100g),2))
+salt_name
+```
+
+```{r}
+salt_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_salt)), y = average_salt) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# Sodium per 100g per crust type
+
+```{r}
+sodium_crust <- pizza_medium %>%
+  select(crust, sodium_g_100g) %>%
+  filter(crust == "Italian Style Crust" | crust == "Stuffed Crust" | 
+         crust == "Thin & Crispy Crust" | crust == "Classic Crust") %>%
+  group_by(crust) %>%
+  summarise(average_sodium = round(mean(sodium_g_100g),2))
+sodium_crust
+```
+
+```{r}
+sodium_crust %>%
+  ggplot() +
+  aes(reorder(x = crust, -(average_sodium)), y = average_sodium) +
+  geom_col(fill = "darkblue")
+```
+
+
+```{r}
+sodium_name <- pizza_medium %>%
+  select(name, sodium_g_100g) %>%
+  group_by(name) %>%
+  summarise(average_sodium = round(mean(sodium_g_100g),2))
+sodium_name
+```
+
+```{r}
+sodium_name %>%
+  ggplot() +
+  aes(reorder(x = name, (average_sodium)), y = average_sodium) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+
+# %RDA Calories for pizza name
+
+```{r}
+kcal_rda_name <- pizza_medium %>%
+  select(name, energy_kcal_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(energy_kcal_rda),1))
+kcal_rda_name
+```
+
+
+
+```{r}
+kcal_rda_name %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+
+
+# %RDA fat for pizza name
+
+
+```{r}
+fat_rda <- pizza_medium %>%
+  select(name, fat_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(fat_rda),1))
+fat_rda
+```
+
+```{r}
+fat_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# %RDA saturated for pizza name
+
+```{r}
+sat_rda <- pizza_medium %>%
+  select(name, sat_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(sat_rda),1))
+sat_rda
+```
+
+```{r}
+sat_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+# %RDA carbs for pizza name
+
+```{r}
+carb_rda <- pizza_medium %>%
+  select(name, carb_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(carb_rda),1))
+carb_rda
+```
+
+```{r}
+carb_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# %RDA of sugar for pizza name
+
+```{r}
+sugar_rda <- pizza_medium %>%
+  select(name, sugars_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(sugars_rda),1))
+sugar_rda
+```
+
+
+```{r}
+sugar_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# %RDA fibre for pizza name
+
+```{r}
+fibre_rda <- pizza_medium %>%
+  select(name, fibre_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(fibre_rda),1))
+fibre_rda
+```
+
+
+```{r}
+fibre_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# %RDA of protein for pizza name
+
+
+```{r}
+protein_rda <- pizza_medium %>%
+  select(name, protein_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(protein_rda),1))
+protein_rda
+```
+
+
+```{r}
+protein_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+# %RDA salt for pizza name
+
+```{r}
+salt_rda <- pizza_medium %>%
+  select(name, salt_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(salt_rda),1))
+salt_rda
+```
+
+
+```{r}
+protein_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
+
+# %RDA of sodium for pizza name
+
+```{r}
+sodium_rda <- pizza_medium %>%
+  select(name, sodium_rda) %>%
+  group_by(name) %>%
+  summarise(percent_RDA = round(mean(sodium_rda),1))
+sodium_rda
+```
+
+```{r}
+sodium_rda %>%
+  ggplot() +
+  aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white")
+```
+
 ```{r}
 
 ```
