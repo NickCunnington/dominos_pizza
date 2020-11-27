@@ -1,0 +1,20 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readxl)
+library(janitor)
+library(tidyverse)
+```
+
+
+```{r}
+pizza <- read_csv("clean_data/pizza_clean.csv")
+```
+
+```{r}
+
+```
+
