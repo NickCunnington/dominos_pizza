@@ -21,7 +21,8 @@ sides_clean <- add_column(sides_clean, type = NA, .after = 1)
 
 
 # populate 'type' column with data to describe dish type.
-sides_clean$type <- c((rep("side", 32)), (rep("dip", 10)), (rep("wrapzz", 6)), (rep("dessert", 4)))
+sides_clean$type <- c((rep("side", 32)), (rep("dip", 10)), (rep("wrapzz", 6)), 
+                      (rep("dessert", 4)))
 
 
 # changing the first column name from 'NA' to 'dish'
