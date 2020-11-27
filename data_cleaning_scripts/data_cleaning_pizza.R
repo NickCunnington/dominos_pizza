@@ -169,15 +169,15 @@ rda_fibre <- 30
 
 # creating %RDA columns for servings
 pizza_clean <- pizza_clean %>%
-  mutate(energy_kcal_rda = round((energy_kcal_serv / rda_kcal), 2)) %>%
-  mutate(fat_rda = round((fat_g_serv / rda_fat), 2)) %>%
-  mutate(sat_rda = round((sat_g_serv / rda_sat), 2)) %>%
-  mutate(carb_rda = round((carb_g_serv / rda_carbs), 2)) %>%
-  mutate(sugars_rda = round((sugars_g_serv / rda_sugar), 2)) %>%
-  mutate(fibre_rda = round((fibre_g_serv / rda_fibre), 2)) %>%
-  mutate(protein_rda = round((protein_g_serv / rda_protein), 2)) %>%
-  mutate(salt_rda = round((salt_g_serv / rda_salt), 2)) %>%
-  mutate(sodium_rda = round((sodium_g_serv / rda_sodium), 2))
+  mutate(energy_kcal_rda = round((energy_kcal_serv / rda_kcal)*100, 1)) %>%
+  mutate(fat_rda = round((fat_g_serv / rda_fat)*100, 1)) %>%
+  mutate(sat_rda = round((sat_g_serv / rda_sat)*100, 1)) %>%
+  mutate(carb_rda = round((carb_g_serv / rda_carbs)*100, 1)) %>%
+  mutate(sugars_rda = round((sugars_g_serv / rda_sugar)*100, 1)) %>%
+  mutate(fibre_rda = round((fibre_g_serv / rda_fibre)*100, 1)) %>%
+  mutate(protein_rda = round((protein_g_serv / rda_protein)*100, 1)) %>%
+  mutate(salt_rda = round((salt_g_serv / rda_salt)*100, 1)) %>%
+  mutate(sodium_rda = round((sodium_g_serv / rda_sodium)*100, 1))
 
 
 # save clean data
