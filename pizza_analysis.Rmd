@@ -40,7 +40,15 @@ kcal_crust
 kcal_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_kcal)), y = average_kcal) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nType of Crust") +
+  ylab("Average Calories (kcal)\n") +
+  ggtitle("Average amount of calories per crust type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) +
+  theme(legend.title = element_text(size = 14))
 ```
 
 
@@ -59,7 +67,14 @@ kcal_name %>%
   ggplot() +
   aes(reorder(x = name, (average_kcal)), y = average_kcal) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Calories (kcal)") +
+  ggtitle("Average amount of calories per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
 ```
 
 
@@ -80,7 +95,14 @@ fat_crust
 fat_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_fat)), y = average_fat) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nPizza Name") +
+  ylab("Average amount of Fat (g)\n") +
+  ggtitle("Average amount of fat per crust name (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
 ```
 
 
@@ -99,7 +121,14 @@ fat_name %>%
   ggplot() +
   aes(reorder(x = name, (average_fat)), y = average_fat) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Fat (g)") +
+  ggtitle("Average amount of Fat per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
 ```
 
 
@@ -119,7 +148,14 @@ sat_crust
 sat_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_sat)), y = average_sat) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nCrust Type") +
+  ylab("Average Saturated Fat (g)\n") +
+  ggtitle("Average amount of Saturated Fat per pizza name (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
 ```
 
 
@@ -138,7 +174,14 @@ sat_name %>%
   ggplot() +
   aes(reorder(x = name, (average_sat)), y = average_sat) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Saturated Fat (g)") +
+  ggtitle("Average amount of saturated fat per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
 ```
 
 
@@ -158,7 +201,14 @@ carb_crust
 carb_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_carbs)), y = average_carbs) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nPizza Type") +
+  ylab("Average Carbs (g)\n") +
+  ggtitle("Average amount of carbs per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
 ```
 
 
@@ -177,7 +227,14 @@ carb_name %>%
   ggplot() +
   aes(reorder(x = name, (average_carbs)), y = average_carbs) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Carbs (g)") +
+  ggtitle("Average amount of carbs per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -197,7 +254,14 @@ sugar_crust
 sugar_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_sugar)), y = average_sugar) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nCrust Type") +
+  ylab("Average Sugars (g)\n") +
+  ggtitle("Average amount of sugar per crust type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -217,7 +281,14 @@ sugar_name %>%
   ggplot() +
   aes(reorder(x = name, (average_sugar)), y = average_sugar) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Name\n") +
+  ylab("\nAverage Sugar (g)") +
+  ggtitle("Average amount of sugar per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -237,7 +308,14 @@ fibre_crust
 fibre_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_fibre)), y = average_fibre) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nCrust type") +
+  ylab("Average Fibre (g)\n") +
+  ggtitle("Average amount of Fibre per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 # Fibre per 100g for pizza name
@@ -255,7 +333,14 @@ fibre_name %>%
   ggplot() +
   aes(reorder(x = name, (average_fibre)), y = average_fibre) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Fibre (g)") +
+  ggtitle("Average amount of Fibre per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -275,7 +360,14 @@ protein_crust
 protein_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_protein)), y = average_protein) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nCrust Type") +
+  ylab("Average Protein (g)\n") +
+  ggtitle("Average amount of Protein per crust type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ```{r}
@@ -292,7 +384,14 @@ protein_name %>%
   ggplot() +
   aes(reorder(x = name, (average_protein)), y = average_protein) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Protein (g)") +
+  ggtitle("Average amount of Protein per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -312,7 +411,14 @@ salt_crust
 salt_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_salt)), y = average_salt) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nCrust Type") +
+  ylab("Average Salt (g)\n") +
+  ggtitle("Average amount of Salt per crust type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ```{r}
@@ -328,7 +434,14 @@ salt_name %>%
   ggplot() +
   aes(reorder(x = name, (average_salt)), y = average_salt) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Salt (g)") +
+  ggtitle("Average amount of Salt per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -348,7 +461,14 @@ sodium_crust
 sodium_crust %>%
   ggplot() +
   aes(reorder(x = crust, -(average_sodium)), y = average_sodium) +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("\nCrust Type") +
+  ylab("Average Sodium (g)\n") +
+  ggtitle("Average amount of Sodium per crust type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -365,7 +485,14 @@ sodium_name %>%
   ggplot() +
   aes(reorder(x = name, (average_sodium)), y = average_sodium) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nAverage Sodium (g)") +
+  ggtitle("Average amount of Sodium per pizza type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -387,7 +514,14 @@ kcal_rda_name %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of calories per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -409,7 +543,14 @@ fat_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fat per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -428,7 +569,14 @@ sat_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of saturated fat per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 # %RDA carbs for pizza name
@@ -446,7 +594,14 @@ carb_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of Carbs per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -466,7 +621,14 @@ sugar_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sugar per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -486,7 +648,14 @@ fibre_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fibre per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -507,7 +676,14 @@ protein_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of protein per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 # %RDA salt for pizza name
@@ -522,11 +698,18 @@ salt_rda
 
 
 ```{r}
-protein_rda %>%
+salt_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of salt per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -545,10 +728,12 @@ sodium_rda %>%
   ggplot() +
   aes(reorder(x = name, (percent_RDA)), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue", col = "white")
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Pizza Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sodium per pizza type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
-
-```{r}
-
-```
-
