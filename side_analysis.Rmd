@@ -735,3 +735,513 @@ sodium_rda_dips %>%
   geom_col(fill = "darkblue")
 ```
 
+
+
+# Wrapzz
+
+```{r}
+wrapzz <- sides %>%
+  filter(type == "wrapzz")
+```
+
+
+### kcal per 100g for wrapzz
+
+
+```{r}
+kcal_wrapzz <- wrapzz %>%
+  select(dish, energy_kcal_100g) %>%
+  group_by(dish) %>%
+  summarise(kcal = energy_kcal_100g)
+kcal_wrapzz
+```
+
+
+```{r}
+kcal_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, kcal), y = kcal) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### fat per 100g for wrapzz
+
+```{r}
+fat_wrapzz <- wrapzz %>%
+  select(dish, fat_g_100g) %>%
+  group_by(dish) %>%
+  summarise(fat = fat_g_100g)
+fat_wrapzz
+```
+
+```{r}
+fat_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, fat), y = fat) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### saturated per 100g for wrapzz
+
+```{r}
+sat_wrapzz <- wrapzz %>%
+  select(dish, sat_g_100g) %>%
+  group_by(dish) %>%
+  summarise(sat = sat_g_100g)
+sat_wrapzz
+```
+
+```{r}
+sat_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, sat), y = sat) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+### carbs per 100g for wrapzz
+
+```{r}
+carb_wrapzz <- wrapzz %>%
+  select(dish, carb_g_100g) %>%
+  group_by(dish) %>%
+  summarise(carbs = carb_g_100g)
+carb_wrapzz
+```
+
+```{r}
+carb_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, carbs), y = carbs) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### sugars per 100g for wrapzz
+
+
+```{r}
+sugar_wrapzz <- wrapzz %>%
+  select(dish, sugars_g_100g) %>%
+  group_by(dish) %>%
+  summarise(sugar = sugars_g_100g)
+sugar_wrapzz
+```
+
+```{r}
+sugar_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, sugar), y = sugar) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+### fibre per 100g for wrapzz
+
+```{r}
+fibre_wrapzz <- wrapzz %>%
+  select(dish, fibre_g_100g) %>%
+  group_by(dish) %>%
+  summarise(fibre = fibre_g_100g)
+fibre_wrapzz
+```
+
+```{r}
+fibre_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, fibre), y = fibre) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### protein per 100g for wrapzz
+
+```{r}
+protein_wrapzz <- wrapzz %>%
+  select(dish, protein_g_100g) %>%
+  group_by(dish) %>%
+  summarise(protein = protein_g_100g)
+protein_wrapzz
+```
+
+```{r}
+protein_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, protein), y = protein) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### salt epr 100g for wrapzz
+
+```{r}
+salt_wrapzz <- wrapzz %>%
+  select(dish, salt_g_100g) %>%
+  group_by(dish) %>%
+  summarise(salt = salt_g_100g)
+salt_wrapzz
+```
+
+```{r}
+salt_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, salt), y = salt) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+### sodium per 100g for wrapzz
+
+```{r}
+sodium_wrapzz <- wrapzz %>%
+  select(dish, sodium_g_100g) %>%
+  group_by(dish) %>%
+  summarise(sodium = sodium_g_100g)
+sodium_wrapzz
+```
+
+```{r}
+sodium_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, sodium), y = sodium) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA kcal for wrapzz
+
+```{r}
+kcal_rda_wrapzz <- wrapzz %>%
+  select(dish, energy_kcal_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = energy_kcal_rda)
+kcal_rda_wrapzz
+```
+
+```{r}
+kcal_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+### %RDA fat for wrapzz
+
+```{r}
+fat_rda_wrapzz <- wrapzz %>%
+  select(dish, fat_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = fat_rda)
+fat_rda_wrapzz
+```
+
+```{r}
+fat_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+### %RDA of fat for wrapzz
+
+```{r}
+sat_rda_wrapzz <- wrapzz %>%
+  select(dish, sat_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = sat_rda)
+sat_rda_wrapzz
+```
+
+```{r}
+sat_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA carbs for wrapzz
+
+```{r}
+carb_rda_wrapzz <- wrapzz %>%
+  select(dish, carb_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = carb_rda)
+carb_rda_wrapzz
+```
+
+```{r}
+carb_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA sugar for wrapzz
+
+```{r}
+sugar_rda_wrapzz <- wrapzz %>%
+  select(dish, sugars_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = sugars_rda)
+sugar_rda_wrapzz
+```
+
+```{r}
+sugar_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA fibre for wrapzz
+
+```{r}
+fibre_rda_wrapzz <- wrapzz %>%
+  select(dish, fibre_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = fibre_rda)
+fibre_rda_wrapzz
+```
+
+```{r}
+fibre_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA of protein for wrapzz
+
+```{r}
+protein_rda_wrapzz <- wrapzz %>%
+  select(dish, protein_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = protein_rda)
+protein_rda_wrapzz
+```
+
+```{r}
+protein_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+### %RDA salt for wrapzz
+
+```{r}
+salt_rda_wrapzz <- wrapzz %>%
+  select(dish, salt_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = salt_rda)
+salt_rda_wrapzz
+```
+
+```{r}
+salt_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA sodium for wrapzz
+
+
+```{r}
+sodium_rda_wrapzz <- wrapzz %>%
+  select(dish, sodium_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = sodium_rda)
+sodium_rda_wrapzz
+```
+
+```{r}
+sodium_rda_wrapzz %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+# Desserts
+
+```{r}
+desserts <- sides %>%
+  filter(type == "dessert")
+```
+
+
+### kcal per 100g for desserts
+
+```{r}
+kcal_desserts <- desserts %>%
+  select(dish, energy_kcal_100g) %>%
+  group_by(dish) %>%
+  summarise(kcal = energy_kcal_100g)
+kcal_desserts
+```
+
+```{r}
+kcal_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, kcal), y = kcal) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### fat per 100g for desserts
+
+
+```{r}
+fat_desserts <- desserts %>%
+  select(dish, fat_g_100g) %>%
+  group_by(dish) %>%
+  summarise(fat = fat_g_100g)
+fat_desserts
+```
+
+```{r}
+fat_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, fat), y = fat) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### saturated per 100g for desserts
+
+```{r}
+sat_desserts <- desserts %>%
+  select(dish, sat_g_100g) %>%
+  group_by(dish) %>%
+  summarise(sat = sat_g_100g)
+sat_desserts
+```
+
+```{r}
+sat_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, sat), y = sat) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### carbs per 100g for desserts
+
+```{r}
+carb_desserts <- desserts %>%
+  select(dish, carb_g_100g) %>%
+  group_by(dish) %>%
+  summarise(carb = carb_g_100g)
+carb_desserts
+```
+
+```{r}
+carb_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, carb), y = carb) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### sugars per 100g for desserts
+
+```{r}
+sugar_desserts <- desserts %>%
+  select(dish, sugars_g_100g) %>%
+  group_by(dish) %>%
+  summarise(sugar = sugars_g_100g)
+sugar_desserts
+```
+
+```{r}
+sugar_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, sugar), y = sugar) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### fibre per 100g for desserts
+
+```{r}
+fibre_desserts <- desserts %>%
+  select(dish, fibre_g_100g) %>%
+  group_by(dish) %>%
+  summarise(fibre = fibre_g_100g)
+fibre_desserts
+```
+
+```{r}
+fibre_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, fibre), y = fibre) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### protein per 100g for desserts
+
+```{r}
+protein_desserts <- desserts %>%
+  select(dish, protein_g_100g) %>%
+  group_by(dish) %>%
+  summarise(protein = protein_g_100g)
+protein_desserts
+```
+
+```{r}
+protein_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, protein), y = protein) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### salt per 100g for desserts
+
+```{r}
+salt_desserts <- desserts %>%
+  select(dish, salt_g_100g) %>%
+  group_by(dish) %>%
+  summarise(salt = salt_g_100g)
+salt_desserts
+```
+
+```{r}
+salt_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, salt), y = salt) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
