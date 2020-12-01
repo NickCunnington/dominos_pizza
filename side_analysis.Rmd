@@ -52,7 +52,16 @@ kcal_sides %>%
   ggplot() +
   aes(reorder(x = dish, energy_kcal), y = energy_kcal) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Calories (kcal)") +
+  ggtitle("Average amount of calories per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
+
+
 ```
 
 ### Fat per 100g for sides
@@ -70,7 +79,14 @@ fat_sides %>%
   ggplot() +
   aes(reorder(x = dish, fat), y = fat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Fat (g)") +
+  ggtitle("Average amount of fat per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -89,7 +105,14 @@ sat_sides %>%
   ggplot() +
   aes(reorder(x = dish, sat), y = sat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Saturated (g)") +
+  ggtitle("Average amount of saturated per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -109,7 +132,14 @@ carb_sides %>%
   ggplot() +
   aes(reorder(x = dish, carbs), y = carbs) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Carbs (g)") +
+  ggtitle("Average amount of carbs per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -128,7 +158,14 @@ sugar_sides %>%
   ggplot() +
   aes(reorder(x = dish, sugar), y = sugar) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Sugar (g)") +
+  ggtitle("Average amount of sugar per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -147,7 +184,14 @@ fibre_sides %>%
   ggplot() +
   aes(reorder(x = dish, fibre), y = fibre) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Fibre (g)") +
+  ggtitle("Average amount of fibre per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -167,7 +211,14 @@ protein_sides %>%
   ggplot() +
   aes(reorder(x = dish, fibre), y = fibre) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Protein (g)") +
+  ggtitle("Average amount of protein per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -187,7 +238,14 @@ salt_sides %>%
   ggplot() +
   aes(reorder(x = dish, salt), y = salt) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Salt (g)") +
+  ggtitle("Average amount of salt per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -207,7 +265,14 @@ sodium_sides %>%
   ggplot() +
   aes(reorder(x = dish, sodium), y = sodium) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nAverage Sodium (g)") +
+  ggtitle("Average amount of sodium per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -228,7 +293,14 @@ kcal_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of calories per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -248,7 +320,14 @@ fat_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fat per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -267,7 +346,14 @@ sat_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of saturated per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -286,7 +372,14 @@ carb_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of carbs per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -305,7 +398,14 @@ sugar_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sugar per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -324,7 +424,14 @@ fibre_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fibre per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -344,7 +451,14 @@ protein_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of protein per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 
 ```
 
@@ -365,7 +479,14 @@ salt_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of salt per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -385,7 +506,14 @@ sodium_rda_sides %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Side Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sodium per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -407,7 +535,14 @@ kcal_dips %>%
   ggplot() +
   aes(reorder(x = dish, energy_kcal), y = energy_kcal) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage calories (kcal)") +
+  ggtitle("Average amount of calories per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -426,7 +561,14 @@ fat_dips %>%
   ggplot() +
   aes(reorder(x = dish, fat), y = fat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage fat (g)") +
+  ggtitle("Average amount of fat per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -445,7 +587,14 @@ sat_dips %>%
   ggplot() +
   aes(reorder(x = dish, sat), y = sat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage Saturated (g)") +
+  ggtitle("Average amount of saturated per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -464,7 +613,14 @@ carb_dips %>%
   ggplot() +
   aes(reorder(x = dish, carbs), y = carbs) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage Carbs (g)") +
+  ggtitle("Average amount of carbs per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -483,7 +639,14 @@ sugar_dips %>%
   ggplot() +
   aes(reorder(x = dish, sugar), y = sugar) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage Sugar (g)") +
+  ggtitle("Average amount of Sugar per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -502,7 +665,14 @@ fibre_dips %>%
   ggplot() +
   aes(reorder(x = dish, fibre), y = fibre) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage Fibre (g)") +
+  ggtitle("Average amount of fibre per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -522,7 +692,14 @@ protein_dips %>%
   ggplot() +
   aes(reorder(x = dish, protein), y = protein) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage Protein (g)") +
+  ggtitle("Average amount of protein per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -541,7 +718,14 @@ salt_dips %>%
   ggplot() +
   aes(reorder(x = dish, salt), y = salt) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage Salt (g)") +
+  ggtitle("Average amount of salt per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -560,7 +744,14 @@ sodium_dips %>%
   ggplot() +
   aes(reorder(x = dish, sodium), y = sodium) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nAverage Sodium (g)") +
+  ggtitle("Average amount of sodium per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -579,7 +770,14 @@ kcal_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of calories per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -598,7 +796,14 @@ fat_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fat per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -617,7 +822,14 @@ sat_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of saturated per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -636,7 +848,14 @@ carb_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of carbs per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -655,7 +874,14 @@ sugar_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sugar per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -674,7 +900,14 @@ fibre_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fibre per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -694,7 +927,14 @@ protein_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of protein per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -713,7 +953,14 @@ salt_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of salt per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -732,7 +979,14 @@ sodium_rda_dips %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dip Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sodium per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -762,7 +1016,14 @@ kcal_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, kcal), y = kcal) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Calories (kcal)") +
+  ggtitle("Average amount of calories per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -781,7 +1042,14 @@ fat_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, fat), y = fat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Fat (g)") +
+  ggtitle("Average amount of fat per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -800,7 +1068,14 @@ sat_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, sat), y = sat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Saturated (g)") +
+  ggtitle("Average amount of saturated per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ### carbs per 100g for wrapzz
@@ -818,7 +1093,14 @@ carb_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, carbs), y = carbs) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Carbs (g)") +
+  ggtitle("Average amount of carbs per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -838,7 +1120,14 @@ sugar_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, sugar), y = sugar) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Sugar (g)") +
+  ggtitle("Average amount of sugar per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ### fibre per 100g for wrapzz
@@ -856,7 +1145,14 @@ fibre_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, fibre), y = fibre) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Fibre (g)") +
+  ggtitle("Average amount of fibre per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -875,11 +1171,18 @@ protein_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, protein), y = protein) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Protein (g)") +
+  ggtitle("Average amount of protein per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
-### salt epr 100g for wrapzz
+### salt per 100g for wrapzz
 
 ```{r}
 salt_wrapzz <- wrapzz %>%
@@ -894,7 +1197,14 @@ salt_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, salt), y = salt) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Salt (g)") +
+  ggtitle("Average amount of salt per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ### sodium per 100g for wrapzz
@@ -912,7 +1222,14 @@ sodium_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, sodium), y = sodium) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nAverage Sodium (g)") +
+  ggtitle("Average amount of sodium per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -931,7 +1248,14 @@ kcal_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of calories per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ### %RDA fat for wrapzz
@@ -949,7 +1273,14 @@ fat_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fat per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ### %RDA of fat for wrapzz
@@ -967,7 +1298,14 @@ sat_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of saturated per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -986,7 +1324,14 @@ carb_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of carbs per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1005,7 +1350,14 @@ sugar_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sugar per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1024,7 +1376,14 @@ fibre_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fibre per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1043,7 +1402,14 @@ protein_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of protein per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ### %RDA salt for wrapzz
@@ -1061,7 +1427,14 @@ salt_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of salt per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1081,7 +1454,14 @@ sodium_rda_wrapzz %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Wrap Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sodium per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1108,7 +1488,14 @@ kcal_desserts %>%
   ggplot() +
   aes(reorder(x = dish, kcal), y = kcal) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Calories (kcal)") +
+  ggtitle("Average amount of calories per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1128,7 +1515,14 @@ fat_desserts %>%
   ggplot() +
   aes(reorder(x = dish, fat), y = fat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Fat (g)") +
+  ggtitle("Average amount of fat per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1147,7 +1541,14 @@ sat_desserts %>%
   ggplot() +
   aes(reorder(x = dish, sat), y = sat) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Saturated (g)") +
+  ggtitle("Average amount of saturated per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1166,7 +1567,14 @@ carb_desserts %>%
   ggplot() +
   aes(reorder(x = dish, carb), y = carb) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Carbs (g)") +
+  ggtitle("Average amount of carbs per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1185,7 +1593,14 @@ sugar_desserts %>%
   ggplot() +
   aes(reorder(x = dish, sugar), y = sugar) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Sugar (g)") +
+  ggtitle("Average amount of sugar per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1204,7 +1619,14 @@ fibre_desserts %>%
   ggplot() +
   aes(reorder(x = dish, fibre), y = fibre) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Fibre (g)") +
+  ggtitle("Average amount of fibre per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1223,7 +1645,14 @@ protein_desserts %>%
   ggplot() +
   aes(reorder(x = dish, protein), y = protein) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Protein (g)") +
+  ggtitle("Average amount of protein per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1242,7 +1671,14 @@ salt_desserts %>%
   ggplot() +
   aes(reorder(x = dish, salt), y = salt) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Salt (g)") +
+  ggtitle("Average amount of salt per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 ### sodium per 100g for desserts
@@ -1260,7 +1696,14 @@ sodium_desserts %>%
   ggplot() +
   aes(reorder(x = dish, sodium), y = sodium) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nAverage Sodium (g)") +
+  ggtitle("Average amount of sodium per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1279,7 +1722,14 @@ kcal_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of calories per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1298,7 +1748,14 @@ fat_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fat per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1317,7 +1774,14 @@ sat_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of saturated per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1337,7 +1801,14 @@ carb_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of carbs per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1356,7 +1827,14 @@ sugar_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sugar per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1375,7 +1853,14 @@ fibre_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of fibre per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1394,7 +1879,14 @@ protein_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of protein per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1413,7 +1905,14 @@ salt_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of salt per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
 
@@ -1432,6 +1931,13 @@ sodium_rda_desserts %>%
   ggplot() +
   aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
   coord_flip() +
-  geom_col(fill = "darkblue")
+  geom_col(fill = "darkblue") +
+  xlab("Dessert Type\n") +
+  ylab("\nPercent RDA") +
+  ggtitle("RDA of sodium per side type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
 ```
 
