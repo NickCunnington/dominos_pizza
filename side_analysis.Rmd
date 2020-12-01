@@ -1245,3 +1245,193 @@ salt_desserts %>%
   geom_col(fill = "darkblue")
 ```
 
+### sodium per 100g for desserts
+
+```{r}
+sodium_desserts <- desserts %>%
+  select(dish, sodium_g_100g) %>%
+  group_by(dish) %>%
+  summarise(sodium = sodium_g_100g)
+sodium_desserts
+```
+
+```{r}
+sodium_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, sodium), y = sodium) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA kcal for desserts
+
+```{r}
+kcal_rda_desserts <- desserts %>%
+  select(dish, energy_kcal_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = energy_kcal_rda)
+kcal_rda_desserts
+```
+
+```{r}
+kcal_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA fat for desserts
+
+```{r}
+fat_rda_desserts <- desserts %>%
+  select(dish, fat_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = fat_rda)
+fat_rda_desserts
+```
+
+```{r}
+fat_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA saturated for desserts
+
+```{r}
+sat_rda_desserts <- desserts %>%
+  select(dish, sat_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = sat_rda)
+sat_rda_desserts
+```
+
+```{r}
+sat_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA carbs for desserts
+
+
+```{r}
+carb_rda_desserts <- desserts %>%
+  select(dish, carb_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = carb_rda)
+carb_rda_desserts
+```
+
+```{r}
+carb_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA sugar
+
+```{r}
+sugar_rda_desserts <- desserts %>%
+  select(dish, sugars_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = sugars_rda)
+sugar_rda_desserts
+```
+
+```{r}
+sugar_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA fibre
+
+```{r}
+fibre_rda_desserts <- desserts %>%
+  select(dish, fibre_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = fibre_rda)
+fibre_rda_desserts
+```
+
+```{r}
+fibre_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA protein for desserts
+
+```{r}
+protein_rda_desserts <- desserts %>%
+  select(dish, protein_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = protein_rda)
+protein_rda_desserts
+```
+
+```{r}
+protein_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA salt
+
+```{r}
+salt_rda_desserts <- desserts %>%
+  select(dish, salt_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = salt_rda)
+salt_rda_desserts
+```
+
+```{r}
+salt_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
+
+### %RDA sodium for desserts
+
+```{r}
+sodium_rda_desserts <- desserts %>%
+  select(dish, sodium_rda) %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = sodium_rda)
+sodium_rda_desserts
+```
+
+```{r}
+sodium_rda_desserts %>%
+  ggplot() +
+  aes(reorder(x = dish, percent_RDA), y = percent_RDA) +
+  coord_flip() +
+  geom_col(fill = "darkblue")
+```
+
