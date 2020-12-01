@@ -517,6 +517,85 @@ sodium_rda_sides %>%
 ```
 
 
+## Combined sides plots
+
+
+### Fat and Sat RDAs
+
+```{r}
+fat_colours <- c("Fat" = "red", "Saturated" = "darkblue")
+
+sides %>%
+  filter(type == "side") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = sat_rda, col = "Fat"), group = 1) +
+  geom_point(aes(y = sat_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= fat_rda, col = "Saturated"), group = 1) +
+  geom_point(aes(y = fat_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = fat_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Fat and Saturated per side type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14)) 
+```
+
+### Carbs and Sugar RDAs
+
+```{r}
+carbs_colours <- c("Carbs" = "red", "Sugars" = "darkblue")
+
+sides %>%
+  filter(type == "side") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = carb_rda, col = "Carbs"), group = 1) +
+  geom_point(aes(y = carb_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sugars_rda, col = "Sugars"), group = 1) +
+  geom_point(aes(y = sugars_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = carbs_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Carbs and Sugar per side type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### Salt and Sodium RDAs
+
+```{r}
+salt_colours <- c("Salt" = "red", "Sodium" = "darkblue")
+
+sides %>%
+  filter(type == "side") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = salt_rda, col = "Salt"), group = 1) +
+  geom_point(aes(y = salt_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sodium_rda, col = "Sodium"), group = 1) +
+  geom_point(aes(y = sodium_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = salt_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Salt and Sodium per side type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+
+
+
 # DIPS
 
 ### kcal per 100g for dips
@@ -773,7 +852,7 @@ kcal_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of calories per side type (percent)\n") +
+  ggtitle("RDA of calories per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -799,7 +878,7 @@ fat_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of fat per side type (percent)\n") +
+  ggtitle("RDA of fat per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -825,7 +904,7 @@ sat_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of saturated per side type (percent)\n") +
+  ggtitle("RDA of saturated per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -851,7 +930,7 @@ carb_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of carbs per side type (percent)\n") +
+  ggtitle("RDA of carbs per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -877,7 +956,7 @@ sugar_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of sugar per side type (percent)\n") +
+  ggtitle("RDA of sugar per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -903,7 +982,7 @@ fibre_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of fibre per side type (percent)\n") +
+  ggtitle("RDA of fibre per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -930,7 +1009,7 @@ protein_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of protein per side type (percent)\n") +
+  ggtitle("RDA of protein per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -956,7 +1035,7 @@ salt_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of salt per side type (percent)\n") +
+  ggtitle("RDA of salt per dip type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -982,7 +1061,83 @@ sodium_rda_dips %>%
   geom_col(fill = "darkblue") +
   xlab("Dip Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of sodium per side type (percent)\n") +
+  ggtitle("RDA of sodium per dips type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+## Combined plots for dips
+
+
+### Fat and Sat
+
+```{r}
+fat_colours <- c("Fat" = "red", "Saturated" = "darkblue")
+
+sides %>%
+  filter(type == "dip") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = sat_rda, col = "Fat"), group = 1) +
+  geom_point(aes(y = sat_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= fat_rda, col = "Saturated"), group = 1) +
+  geom_point(aes(y = fat_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = fat_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Fat and Saturated per dip type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### Carbs and Sugar
+
+```{r}
+carbs_colours <- c("Carbs" = "red", "Sugars" = "darkblue")
+
+sides %>%
+  filter(type == "side") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = carb_rda, col = "Carbs"), group = 1) +
+  geom_point(aes(y = carb_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sugars_rda, col = "Sugars"), group = 1) +
+  geom_point(aes(y = sugars_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = carbs_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Fat and Saturated per side type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### salt and sodium
+
+```{r}
+salt_colours <- c("Salt" = "red", "Sodium" = "darkblue")
+
+sides %>%
+  filter(type == "side") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = salt_rda, col = "Salt"), group = 1) +
+  geom_point(aes(y = salt_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sodium_rda, col = "Sodium"), group = 1) +
+  geom_point(aes(y = sodium_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = salt_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Fat and Saturated per side type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1019,7 +1174,7 @@ kcal_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Calories (kcal)") +
-  ggtitle("Average amount of calories per side type (per 100g)\n") +
+  ggtitle("Average amount of calories per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1045,7 +1200,7 @@ fat_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Fat (g)") +
-  ggtitle("Average amount of fat per side type (per 100g)\n") +
+  ggtitle("Average amount of fat per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1071,7 +1226,7 @@ sat_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Saturated (g)") +
-  ggtitle("Average amount of saturated per side type (per 100g)\n") +
+  ggtitle("Average amount of saturated per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1096,7 +1251,7 @@ carb_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Carbs (g)") +
-  ggtitle("Average amount of carbs per side type (per 100g)\n") +
+  ggtitle("Average amount of carbs per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1123,7 +1278,7 @@ sugar_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Sugar (g)") +
-  ggtitle("Average amount of sugar per side type (per 100g)\n") +
+  ggtitle("Average amount of sugar per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1148,7 +1303,7 @@ fibre_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Fibre (g)") +
-  ggtitle("Average amount of fibre per side type (per 100g)\n") +
+  ggtitle("Average amount of fibre per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1174,7 +1329,7 @@ protein_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Protein (g)") +
-  ggtitle("Average amount of protein per side type (per 100g)\n") +
+  ggtitle("Average amount of protein per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1200,7 +1355,7 @@ salt_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Salt (g)") +
-  ggtitle("Average amount of salt per side type (per 100g)\n") +
+  ggtitle("Average amount of salt per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1225,7 +1380,7 @@ sodium_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nAverage Sodium (g)") +
-  ggtitle("Average amount of sodium per side type (per 100g)\n") +
+  ggtitle("Average amount of sodium per wrap type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1251,7 +1406,7 @@ kcal_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of calories per side type (percent)\n") +
+  ggtitle("RDA of calories per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1276,7 +1431,7 @@ fat_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of fat per side type (percent)\n") +
+  ggtitle("RDA of fat per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1301,7 +1456,7 @@ sat_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of saturated per side type (percent)\n") +
+  ggtitle("RDA of saturated per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1327,7 +1482,7 @@ carb_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of carbs per side type (percent)\n") +
+  ggtitle("RDA of carbs per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1353,7 +1508,7 @@ sugar_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of sugar per side type (percent)\n") +
+  ggtitle("RDA of sugar per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1379,7 +1534,7 @@ fibre_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of fibre per side type (percent)\n") +
+  ggtitle("RDA of fibre per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1405,7 +1560,7 @@ protein_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of protein per side type (percent)\n") +
+  ggtitle("RDA of protein per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1430,7 +1585,7 @@ salt_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of salt per side type (percent)\n") +
+  ggtitle("RDA of salt per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1457,7 +1612,7 @@ sodium_rda_wrapzz %>%
   geom_col(fill = "darkblue") +
   xlab("Wrap Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of sodium per side type (percent)\n") +
+  ggtitle("RDA of sodium per wrap type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1491,7 +1646,7 @@ kcal_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Calories (kcal)") +
-  ggtitle("Average amount of calories per side type (per 100g)\n") +
+  ggtitle("Average amount of calories per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1518,7 +1673,7 @@ fat_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Fat (g)") +
-  ggtitle("Average amount of fat per side type (per 100g)\n") +
+  ggtitle("Average amount of fat per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1544,7 +1699,7 @@ sat_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Saturated (g)") +
-  ggtitle("Average amount of saturated per side type (per 100g)\n") +
+  ggtitle("Average amount of saturated per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1570,7 +1725,7 @@ carb_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Carbs (g)") +
-  ggtitle("Average amount of carbs per side type (per 100g)\n") +
+  ggtitle("Average amount of carbs per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1596,7 +1751,7 @@ sugar_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Sugar (g)") +
-  ggtitle("Average amount of sugar per side type (per 100g)\n") +
+  ggtitle("Average amount of sugar per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1622,7 +1777,7 @@ fibre_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Fibre (g)") +
-  ggtitle("Average amount of fibre per side type (per 100g)\n") +
+  ggtitle("Average amount of fibre per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1648,7 +1803,7 @@ protein_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Protein (g)") +
-  ggtitle("Average amount of protein per side type (per 100g)\n") +
+  ggtitle("Average amount of protein per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1674,7 +1829,7 @@ salt_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Salt (g)") +
-  ggtitle("Average amount of salt per side type (per 100g)\n") +
+  ggtitle("Average amount of salt per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1699,7 +1854,7 @@ sodium_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nAverage Sodium (g)") +
-  ggtitle("Average amount of sodium per side type (per 100g)\n") +
+  ggtitle("Average amount of sodium per dessert type (per 100g)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1725,7 +1880,7 @@ kcal_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of calories per side type (percent)\n") +
+  ggtitle("RDA of calories per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1751,7 +1906,7 @@ fat_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of fat per side type (percent)\n") +
+  ggtitle("RDA of fat per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1777,7 +1932,7 @@ sat_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of saturated per side type (percent)\n") +
+  ggtitle("RDA of saturated per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1804,7 +1959,7 @@ carb_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of carbs per side type (percent)\n") +
+  ggtitle("RDA of carbs per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1830,7 +1985,7 @@ sugar_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of sugar per side type (percent)\n") +
+  ggtitle("RDA of sugar per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1856,7 +2011,7 @@ fibre_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of fibre per side type (percent)\n") +
+  ggtitle("RDA of fibre per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1882,7 +2037,7 @@ protein_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of protein per side type (percent)\n") +
+  ggtitle("RDA of protein per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1908,7 +2063,7 @@ salt_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of salt per side type (percent)\n") +
+  ggtitle("RDA of salt per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1934,7 +2089,7 @@ sodium_rda_desserts %>%
   geom_col(fill = "darkblue") +
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
-  ggtitle("RDA of sodium per side type (percent)\n") +
+  ggtitle("RDA of sodium per dessert type (percent)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
