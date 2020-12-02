@@ -22,15 +22,14 @@ sides <- read_csv("clean_data/sides_clean.csv")
 # %RDA long table (+ removing duplicates of recipes)
 
 sides_pivoted_RDA <- sides %>%
-  select(dish, type, Calories, Fat, Saturated, Carbs, Sugar, Fibre, Protein, Salt, 
-         Sodium) %>%
+  select(dish, type, Calories, Fat, Saturated, Carbs, Sugar, Fibre, Protein, Salt) %>%
   filter(dish != "Spicy BBQ Wings (14)" & dish != "Frank's Red Hot Wings (14)" &
            dish != "Chicken Wings (14)" & dish!= "Chicken Strippers (14)" &
            dish != "Chicken Kickers (14)" & dish != "Pop'n Chicken Double Portion" &
            dish != "BBQ Dip 100g" & dish != "Frank's Hot Dip 100g" & 
            dish != "Garlic and Herb Dip 100g") %>% 
   pivot_longer(cols = c(Calories, Fat, Saturated, Carbs, Sugar, Fibre, Protein, 
-                        Salt, Sodium), 
+                        Salt), 
                names_to = "Macros", 
                values_to = "Values")
 ```
@@ -118,19 +117,19 @@ sides_pivoted_100g %>%
 ## Side Dishes
 
 
-### %RDA Calories and Protein for Sides
+### %RDA Calories for Sides
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "side") %>%
-  filter(Macros == "Protein" | Macros =="Calories") %>%
+  filter(Macros == "Calories") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Calories and Protein for Side dishes (per serving)\n") +
+  ggtitle("% RDA of Calories for Side dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -138,19 +137,19 @@ sides_pivoted_RDA %>%
 ```
 
 
-### %RDA of Fat and Saturated Fat for sides
+### %RDA Protein for Sides
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "side") %>%
-  filter(Macros == "Fat" | Macros =="Saturated") %>%
+  filter(Macros == "Protein") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of non-sat Fat and Sat Fat for Side dishes (per serving)\n") +
+  ggtitle("%RDA of Protein for Side dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -158,19 +157,38 @@ sides_pivoted_RDA %>%
 ```
 
 
-### %RDA of Carbs and Sugars for sides
+### %RDA of Fat for sides
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "side") %>%
-  filter(Macros == "Carbs" | Macros =="Sugar") %>%
+  filter(Macros == "Fat") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Carbs and Sugar for Side dishes (per serving)\n") +
+  ggtitle("%RDA of Fat for Side dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA of Saturated for sides
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "side") %>%
+  filter(Macros == "Saturated") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Saturated Fat for Side dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -178,82 +196,125 @@ sides_pivoted_RDA %>%
 ```
 
 
-# %RDA of Fibre and Salt for sides
 
+
+### %RDA of Carbs for sides
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "side") %>%
-  filter(Macros == "Salt" | Macros =="Fibre") %>%
+  filter(Macros == "Carbs") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Fibre and Salt for Side dishes (per serving)\n") +
+  ggtitle("%RDA of Carbs for Side dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
+
+### %RDA of Sugar for Sides
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "side") %>%
+  filter(Macros == "Sugar") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Sugar for Side dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+
+### %RDA of Fibre for sides
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "side") %>%
+  filter(Macros == "Fibre") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fibre for Side dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Salt for sides
+
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "side") %>%
+  filter(Macros == "Salt") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Salt for Side dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
 
 
 ## Dips
 
-### %RDA Calories and Protein for dips
+### %RDA Calories for dips
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "dip") %>%
-  filter(Macros == "Protein" | Macros =="Calories") %>%
+  filter(Macros =="Calories") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Calories and Protein for Side dishes (per serving)\n") +
+  ggtitle("%RDA of Calories for Side dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
 
-### %RDA Fat and Saturated Fat for dips
+### %RDA of Protein for Side
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "dip") %>%
-  filter(Macros == "Fat" | Macros =="Saturated") %>%
+  filter(Macros =="Protein") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of non-sat Fat and Saturated Fat for Dips (per serving)\n") +
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
-  theme(axis.title.x = element_text(size = 14)) +
-  theme(axis.title.y = element_text(size = 14))
-```
-
-
-### %RDA of Carbs and Sugar for dips
-
-
-```{r}
-sides_pivoted_RDA %>%
-  filter(type == "dip") %>%
-  filter(Macros == "Carbs" | Macros =="Sugar") %>%
-  ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
-  coord_flip() +
-  xlab("Side Type\n") +
-  ylab("\nRDA (%)") +
-  ggtitle("RDA of Carbs and Sugar for Dips (per serving)\n") +
+  ggtitle("%RDA of Protein for Dips (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -261,41 +322,162 @@ sides_pivoted_RDA %>%
 ```
 
 
-### %RDA of Fibre and Salt for dips
+
+### %RDA Fat for dips
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "dip") %>%
-  filter(Macros == "Salt" | Macros =="Fibre") %>%
+  filter(Macros =="Fat") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Fibre and Salt for Dips (per serving)\n") +
+  ggtitle("%RDA of Fat for Dips (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
+
+### %RDA of saturated for dips
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dip") %>%
+  filter(Macros =="Saturated") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Saturated for Dips (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+
+### %RDA of Carbs for dips
+
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dip") %>%
+  filter(Macros =="Carbs") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Carbs for Dips (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA of sugars for dips
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dip") %>%
+  filter(Macros =="Sugar") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Sugar for Dips (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Fibre  for dips
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dip") %>%
+  filter(Macros =="Fibre") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fibre for Dips (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA fo Salt for dips
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dip") %>%
+  filter(Macros =="Salt") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Salt for Dips (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
 
 
 ## Wraps
 
-### %RDA Calories and Protein for wraps
+### %RDA Calories for wraps
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "wrapzz") %>%
-  filter(Macros == "Protein" | Macros =="Calories") %>%
+  filter(Macros =="Calories") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Calories and Protein for Wraps (per serving)\n") +
+  ggtitle("%RDA of Calories for Wraps (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA Protein for Wraps
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dip") %>%
+  filter(Macros =="Protein") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Protein for Wraps (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -303,82 +485,161 @@ sides_pivoted_RDA %>%
 ```
 
 
-### %RDA Fat and Sat for Wraps
+
+### %RDA Fat for Wraps
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "wrapzz") %>%
-  filter(Macros == "Saturated" | Macros =="Fat") %>%
+  filter(Macros =="Fat") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of non-sat Fat and Sat Fat for Wraps (per serving)\n") +
+  ggtitle("%RDA of Fat for Wraps (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
 
-# %RDA Carbs and Sugar
+### %RDA of Sat for wraps
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "wrapzz") %>%
-  filter(Macros == "Carbs" | Macros =="Sugar") %>%
+  filter(Macros =="Saturated") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Carbs and Sugar for Wraps (per serving)\n") +
+  ggtitle("%RDA of Saturated Fat for Wraps (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
 
-### %RDA of Fibre and Salt for Wraps
+
+
+### %RDA Carbs 
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "wrapzz") %>%
-  filter(Macros == "Salt" | Macros =="Fibre") %>%
+  filter(Macros =="Carbs") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Fibre and Salt for Wraps (per serving)\n") +
+  ggtitle("%RDA of Carbs for Wraps (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
 
+### %RDA of sugars for wraps
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "wrapzz") %>%
+  filter(Macros =="Sugar") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Sugar for Wraps (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Fibre for Wraps
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "wrapzz") %>%
+  filter(Macros =="Fibre") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fibre for Wraps (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA of salt for wraps
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "wrapzz") %>%
+  filter(Macros =="Salt") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Salt for Wraps (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
 
 
 
 
 ## Desserts
 
-### %RDA Calories and Protein for desserts
+### %RDA Calories for desserts
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "dessert") %>%
-  filter(Macros == "Protein" | Macros =="Calories") %>%
+  filter(Macros =="Calories") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Calories and Protein for Desserts (per serving)\n") +
+  ggtitle("%RDA of Calories for Dessert dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA of Protein for desserts
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dessert") %>%
+  filter(Macros =="Protein") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Protein for Dessert dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -386,38 +647,38 @@ sides_pivoted_RDA %>%
 ```
 
 
-### %RDA of Fat and Sat for desserts
+### %RDA of Fat for desserts
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "dessert") %>%
-  filter(Macros == "Fat" | Macros =="Saturated") %>%
+  filter(Macros == "Fat") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of non-sat Fat and Saturated Fat for Desserts (per serving)\n") +
+  ggtitle("RDA of Fat for Dessert dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
 
-### %RDA Carbs and Sugar for desserts
+### %RDA Saturated for desserts
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "dessert") %>%
-  filter(Macros == "Carbs" | Macros =="Sugar") %>%
+  filter(Macros =="Saturated") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Carbs and Sugar for Desserts (per serving)\n") +
+  ggtitle("%RDA of Saturated Fat for Dessert dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -425,19 +686,77 @@ sides_pivoted_RDA %>%
 ```
 
 
-### %RDA Fibre and Salt for desserts
+### %RDA Carbs for desserts
 
 ```{r}
 sides_pivoted_RDA %>%
   filter(type == "dessert") %>%
-  filter(Macros == "Salt" | Macros =="Fibre") %>%
+  filter(Macros == "Carbs") %>%
   ggplot() +
-  aes(x = dish, y = Values, fill = Macros) +
-  geom_col(position = "dodge") +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("RDA of Fibre and Salt for Desserts (per serving)\n") +
+  ggtitle("%RDA of Carbs for Dessert dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA of sugars for desserts
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dessert") %>%
+  filter(Macros == "Sugar") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Sugar for Dessert dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA Fibre for desserts
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dessert") %>%
+  filter(Macros == "Fibre") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fibre for Dessert dishes (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA of Salt for desserts
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "dessert") %>%
+  filter(Macros == "Salt") %>%
+  ggplot() +
+  aes(x = dish, y = Values) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Salt for Dessert dishes (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
