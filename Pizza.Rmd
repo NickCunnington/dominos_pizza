@@ -1,0 +1,483 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(readxl)
+library(janitor)
+library(tidyverse)
+```
+
+```{r}
+pizza <- read_csv("clean_data/pizza_clean.csv")
+```
+
+
+
+# Changing table format from wide to long to make it easier to plot data in groups
+
+
+```{r}
+# %RDA long table (+ removing duplicates of recipes)
+
+pizza_pivoted_RDA <- pizza %>%
+  select(name, crust, size, Calories, Fat, Saturated, Carbs, Sugar, Fibre, 
+         Protein, Salt) %>%
+  filter(name != "Gluten Free Pizzas" & name != "Vegan Pizza") %>% 
+  pivot_longer(cols = c(Calories, Fat, Saturated, Carbs, Sugar, Fibre, Protein, 
+                        Salt), 
+               names_to = "Macros", 
+               values_to = "Values")
+```
+
+
+```{r}
+# g per serving long table (+ removing duplicates of recipes) 
+
+pizza_pivoted_serv <- pizza %>%
+  select(name, crust, size, energy_kcal_serv, fat_g_serv, sat_g_serv, carb_g_serv, 
+         sugars_g_serv, fibre_g_serv, protein_g_serv, salt_g_serv, sodium_g_serv) %>%
+  filter(name != "Gluten Free Pizzas" & name != "Vegan Pizza") %>% 
+  pivot_longer(cols = c(energy_kcal_serv, fat_g_serv, sat_g_serv, carb_g_serv,
+                        sugars_g_serv, fibre_g_serv, protein_g_serv, salt_g_serv,
+                        sodium_g_serv),
+               names_to = "Macros", 
+               values_to = "Values")
+```
+
+
+```{r}
+# per 100g long table (+ removing duplicates of recipes)
+
+pizza_pivoted_100g <- pizza %>%
+  select(name, crust, size, energy_kcal_100g, fat_g_100g, sat_g_100g, carb_g_100g, 
+         sugars_g_100g, fibre_g_100g, protein_g_100g, salt_g_100g, sodium_g_100g) %>%
+  filter(name != "Gluten Free Pizzas" & name != "Vegan Pizza") %>%
+  pivot_longer(cols = c(energy_kcal_100g, fat_g_100g, sat_g_100g, carb_g_100g,
+                        sugars_g_100g, fibre_g_100g, protein_g_100g, salt_g_100g,
+                        sodium_g_100g),
+               names_to = "Macros", 
+               values_to = "Values")
+  
+```
+
+
+# Exploring the Data
+
+
+## Macros for Pizza name per 100g
+
+
+*There are multiple entries for each pizza name, as there are up to 4 sizes of pizza and 4 different crust types.  This makes it a bit more difficult to plot.*
+
+*However as not all crust types are available in all 4 sizes I shall just choose the "medium" size as my baseline for comparison between different crust types and pizza toppings.* 
+
+
+```{r}
+# Average calories across all pizza names for each medium sized crust type 
+
+pizza_pivoted_100g %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "energy_kcal_100g") %>%
+  group_by(crust) %>%
+  summarise(average_calories = round(mean(Values),0))
+```
+
+*Although exploring this using values per 100g is a good way of normalising data for all the food types to a common baseline, it isn't really that easy for a person to immediately understand whether something is good or bad nutritionally, only how it compares to something else.  I shall therefore use the values per serving as a baseline.  And specifically use the percent of recommended daily allowance, rather than in grams, so it's easy to quickly judge the nutritional value of a dish compared to you RDA guidelines.*
+
+
+
+
+# Using percentage of Recommended Daily Allowance (RDA) of macros
+
+
+
+## Crust Types
+
+
+### %RDA Calories for Crust types
+
+```{r}
+crust_calories <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Calories") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_calories %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Calories for Crust Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Protein for Crust Type
+
+```{r}
+crust_protein <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Protein") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_protein %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Protein for Crust Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Fat for crust types
+
+```{r}
+crust_fat <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Fat") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_fat %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fat for Crust Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Saturated for Crust types
+
+```{r}
+crust_sat <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Saturated") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_sat %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Saturated Fat for Crust Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA Carbs for Crust type
+
+```{r}
+crust_carbs <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Carbs") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_carbs %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Carbs for Crust Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA sugar for crust types
+
+```{r}
+crust_sugar <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Sugar") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_sugar %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Sugar for Crust Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA Fibre for Crust Type
+
+
+```{r}
+crust_fibre <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Fibre") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_fibre %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fibre for Crust Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA salt for crust types
+
+```{r}
+crust_salt <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Salt") %>%
+  group_by(crust) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+crust_salt %>%
+  ggplot() +
+  aes(x = crust, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue") +
+  coord_flip() +
+  xlab("Crust Type\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Carbs for Salt Type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+
+# Pizza Toppings
+
+```{r}
+pizza_calories <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Calories") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_calories %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Calories for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Protein for pizza name
+
+```{r}
+pizza_protein <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Protein") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_protein %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Protein for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Fat for Pizza Name
+
+```{r}
+pizza_fat <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Fat") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_fat %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fat for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### %RDA Saturated for pizza name
+
+```{r}
+pizza_sat <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Saturated") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_calories %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Saturated Fat for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of carbs per pizza name
+
+```{r}
+pizza_carbs <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Carbs") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_carbs %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Carbs for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of sugars for pizza name
+
+```{r}
+pizza_sugar <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Sugar") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_sugar %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Sugar for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA of Fibre for pizza name
+
+```{r}
+pizza_fibre <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Fibre") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_fibre %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Fibre for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+### %RDA fo salt for pizza name
+
+```{r}
+pizza_salt <- pizza_pivoted_RDA %>%
+  filter(size == "Medium") %>%
+  filter(Macros == "Salt") %>%
+  group_by(name) %>%
+  summarise(avg_percent_RDA = round(mean(Values),0))
+
+pizza_salt %>%
+  ggplot() +
+  aes(x = name, y = avg_percent_RDA) +
+  geom_col(fill = "darkblue", col = "white") +
+  coord_flip() +
+  xlab("Pizza Name\n") +
+  ylab("\nRDA (%)") +
+  ggtitle("%RDA of Salt for Pizza Name (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
