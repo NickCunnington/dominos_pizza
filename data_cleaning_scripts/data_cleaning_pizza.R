@@ -175,7 +175,7 @@ pizza_clean <- pizza_clean %>%
   mutate(Carbs = round((carb_g_serv / rda_carbs)*100, 1)) %>%
   mutate(Sugar = round((sugars_g_serv / rda_sugar)*100, 1)) %>%
   mutate(Fibre = round((fibre_g_serv / rda_fibre)*100, 1)) %>%
-  mutate(protein = round((protein_g_serv / rda_protein)*100, 1)) %>%
+  mutate(Protein = round((protein_g_serv / rda_protein)*100, 1)) %>%
   mutate(Salt = round((salt_g_serv / rda_salt)*100, 1))
 
 
