@@ -136,7 +136,7 @@ pizza_clean$crust <- c("GF Cheese & Tomato", "GF Vegi Supreme", "GF Pepperoni Pa
                        rep("Stuffed Crust", 2), rep("Thin & Crispy Crust", 2))
 
 
-# clean column names, convert numbers from chatacter to numeric
+# clean column names, convert numbers from character to numeric
 pizza_clean <- pizza_clean %>%
   clean_names() %>%
   mutate_all(type.convert) %>%
@@ -169,15 +169,14 @@ rda_fibre <- 30
 
 # creating %RDA columns for servings
 pizza_clean <- pizza_clean %>%
-  mutate(energy_kcal_rda = round((energy_kcal_serv / rda_kcal)*100, 1)) %>%
-  mutate(fat_rda = round((fat_g_serv / rda_fat)*100, 1)) %>%
-  mutate(sat_rda = round((sat_g_serv / rda_sat)*100, 1)) %>%
-  mutate(carb_rda = round((carb_g_serv / rda_carbs)*100, 1)) %>%
-  mutate(sugars_rda = round((sugars_g_serv / rda_sugar)*100, 1)) %>%
-  mutate(fibre_rda = round((fibre_g_serv / rda_fibre)*100, 1)) %>%
-  mutate(protein_rda = round((protein_g_serv / rda_protein)*100, 1)) %>%
-  mutate(salt_rda = round((salt_g_serv / rda_salt)*100, 1)) %>%
-  mutate(sodium_rda = round((sodium_g_serv / rda_sodium)*100, 1))
+  mutate(Calories = round((energy_kcal_serv / rda_kcal)*100, 1)) %>%
+  mutate(Fat = round((fat_g_serv / rda_fat)*100, 1)) %>%
+  mutate(Saturated = round((sat_g_serv / rda_sat)*100, 1)) %>%
+  mutate(Carbs = round((carb_g_serv / rda_carbs)*100, 1)) %>%
+  mutate(Sugar = round((sugars_g_serv / rda_sugar)*100, 1)) %>%
+  mutate(Fibre = round((fibre_g_serv / rda_fibre)*100, 1)) %>%
+  mutate(protein = round((protein_g_serv / rda_protein)*100, 1)) %>%
+  mutate(Salt = round((salt_g_serv / rda_salt)*100, 1))
 
 
 # save clean data
