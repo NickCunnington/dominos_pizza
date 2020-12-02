@@ -64,7 +64,7 @@ rda_fibre <- 30
 
 # add columns for %RDA per servings
 sides_clean <- sides_clean %>%
-  mutate(Energy = round((energy_kcal_serv / rda_kcal)*100, 1)) %>%
+  mutate(Calories = round((energy_kcal_serv / rda_kcal)*100, 1)) %>%
   mutate(Fat = round((fat_g_serv / rda_fat)*100, 1)) %>%
   mutate(Saturated = round((sat_g_serv / rda_sat)*100, 1)) %>%
   mutate(Carbs = round((carb_g_serv / rda_carbs)*100, 1)) %>%
