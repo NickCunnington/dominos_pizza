@@ -71,8 +71,8 @@ sides_clean <- sides_clean %>%
   mutate(Sugar = round((sugars_g_serv / rda_sugar)*100, 1)) %>%
   mutate(Fibre = round((fibre_g_serv / rda_fibre)*100, 1)) %>%
   mutate(Protein = round((protein_g_serv / rda_protein)*100, 1)) %>%
-  mutate(Salt = round((salt_g_serv / rda_salt)*100, 1)) %>%
-  mutate(Sodium = round((sodium_g_serv / rda_sodium)*100, 1))
+  mutate(Salt = round((salt_g_serv / rda_salt)*100, 1))
+
 
 
 # save clean data
