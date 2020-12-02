@@ -1,4 +1,4 @@
-dish,type,energy_kcal_100g,energy_kj_100g,fat_g_100g,sat_g_100g,carb_g_100g,sugars_g_100g,fibre_g_100g,protein_g_100g,salt_g_100g,sodium_g_100g,serves,energy_kcal_serv,energy_kj_serv,fat_g_serv,sat_g_serv,carb_g_serv,sugars_g_serv,fibre_g_serv,protein_g_serv,salt_g_serv,sodium_g_serv,energy_kcal_rda,fat_rda,sat_rda,carb_rda,sugars_rda,fibre_rda,protein_rda,salt_rda,sodium_rda
+dish,type,energy_kcal_100g,energy_kj_100g,fat_g_100g,sat_g_100g,carb_g_100g,sugars_g_100g,fibre_g_100g,protein_g_100g,salt_g_100g,sodium_g_100g,serves,energy_kcal_serv,energy_kj_serv,fat_g_serv,sat_g_serv,carb_g_serv,sugars_g_serv,fibre_g_serv,protein_g_serv,salt_g_serv,sodium_g_serv,Energy,Fat,Sat,Carbs,Sugar,Fibre,Protein,Salt,Sodium
 Chick 'n' Mix,side,229,963,10.6,2.6,14,0.5,0.8,19.5,1.43,0.56,2,386,1622,17.9,4.4,23.6,0.8,1.3,32.8,2.42,0.95,19.3,25.6,22,9.1,0.9,4.3,65.6,40.3,39.6
 Chicken Kickers (7),side,213,896,7,1.3,15.4,0.4,1.2,21.1,1.5,0.59,2,186,784,6.1,1.1,13.5,0.4,1.1,18.4,1.31,0.52,9.3,8.7,5.5,5.2,0.4,3.7,36.8,21.8,21.7
 Chicken Kickers (14),side,213,896,7,1.3,15.4,0.4,1.2,21.1,1.5,0.59,4,186,784,6.1,1.1,13.5,0.4,1.1,18.4,1.31,0.52,9.3,8.7,5.5,5.2,0.4,3.7,36.8,21.8,21.7
