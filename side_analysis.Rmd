@@ -1102,7 +1102,7 @@ sides %>%
 carbs_colours <- c("Carbs" = "red", "Sugars" = "darkblue")
 
 sides %>%
-  filter(type == "side") %>%
+  filter(type == "dip") %>%
   ggplot(aes(x = dish)) +
   geom_line(aes(y = carb_rda, col = "Carbs"), group = 1) +
   geom_point(aes(y = carb_rda), col = "red", alpha = 0.7) +
@@ -1113,7 +1113,7 @@ sides %>%
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRecommended Daily Allowance (%)") +
-  ggtitle("RDA of Fat and Saturated per side type (per serving)\n") +
+  ggtitle("RDA of Carbs and Sugars per dip type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1126,7 +1126,7 @@ sides %>%
 salt_colours <- c("Salt" = "red", "Sodium" = "darkblue")
 
 sides %>%
-  filter(type == "side") %>%
+  filter(type == "dip") %>%
   ggplot(aes(x = dish)) +
   geom_line(aes(y = salt_rda, col = "Salt"), group = 1) +
   geom_point(aes(y = salt_rda), col = "red", alpha = 0.7) +
@@ -1137,7 +1137,7 @@ sides %>%
   coord_flip() +
   xlab("Side Type\n") +
   ylab("\nRecommended Daily Allowance (%)") +
-  ggtitle("RDA of Fat and Saturated per side type (per serving)\n") +
+  ggtitle("RDA of Salt and Sodium per dip type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -1619,6 +1619,82 @@ sodium_rda_wrapzz %>%
   theme(axis.title.y = element_text(size = 14))
 ```
 
+## Combined plots
+
+### Fat and Sat
+
+```{r}
+fat_colours <- c("Fat" = "red", "Saturated" = "darkblue")
+
+sides %>%
+  filter(type == "wrapzz") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = fat_rda, col = "Fat"), group = 1) +
+  geom_point(aes(y = fat_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sat_rda, col = "Saturated"), group = 1) +
+  geom_point(aes(y = sat_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = fat_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Fat and Saturated per Wrap type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### carbs and sugars
+
+```{r}
+carbs_colours <- c("Carbs" = "red", "Sugar" = "darkblue")
+
+sides %>%
+  filter(type == "wrapzz") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = carb_rda, col = "Carbs"), group = 1) +
+  geom_point(aes(y = carb_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sugars_rda, col = "Sugar"), group = 1) +
+  geom_point(aes(y = sugars_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = carbs_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Carbs and Sugar per Wrap type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### salt and sodium
+
+```{r}
+salt_colours <- c("Salt" = "red", "Sodium" = "darkblue")
+
+sides %>%
+  filter(type == "wrapzz") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = salt_rda, col = "Salt"), group = 1) +
+  geom_point(aes(y = salt_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sodium_rda, col = "Sodium"), group = 1) +
+  geom_point(aes(y = sodium_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = salt_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Salt and Sodium per Wrap type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+
+
 
 # Desserts
 
@@ -2090,6 +2166,80 @@ sodium_rda_desserts %>%
   xlab("Dessert Type\n") +
   ylab("\nPercent RDA") +
   ggtitle("RDA of sodium per dessert type (percent)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+## combined plots
+
+### fat and sat
+
+```{r}
+salt_colours <- c("Fat" = "red", "Saturated" = "darkblue")
+
+sides %>%
+  filter(type == "dessert") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = fat_rda, col = "Fat"), group = 1) +
+  geom_point(aes(y = fat_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sat_rda, col = "Saturated"), group = 1) +
+  geom_point(aes(y = sat_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = fat_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Fat and Saturated per dessert type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+### carbs and sugar
+
+```{r}
+carbs_colours <- c("Carbs" = "red", "Sugar" = "darkblue")
+
+sides %>%
+  filter(type == "dessert") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = carb_rda, col = "Carbs"), group = 1) +
+  geom_point(aes(y = carb_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sugars_rda, col = "Sugar"), group = 1) +
+  geom_point(aes(y = sugars_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = carbs_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Carb and Sugar per dessert type (per serving)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+## salt and sodium
+
+```{r}
+salt_colours <- c("Salt" = "red", "Sodium" = "darkblue")
+
+sides %>%
+  filter(type == "dessert") %>%
+  ggplot(aes(x = dish)) +
+  geom_line(aes(y = salt_rda, col = "Salt"), group = 1) +
+  geom_point(aes(y = salt_rda), col = "red", alpha = 0.7) +
+  geom_line(aes(y= sodium_rda, col = "Sodium"), group = 1) +
+  geom_point(aes(y = sodium_rda), col = "darkblue", alpha = 0.7) +
+  labs(col = "Macro") +
+  scale_colour_manual(values = salt_colours) +
+  coord_flip() +
+  xlab("Side Type\n") +
+  ylab("\nRecommended Daily Allowance (%)") +
+  ggtitle("RDA of Salt and Sodium per dessert type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
