@@ -1,0 +1,147 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readxl)
+library(janitor)
+library(tidyverse)
+```
+
+```{r}
+sides <- read_csv("clean_data/sides_clean.csv")
+```
+
+
+
+# Changing table format from wide to long to make it easier to plot data in groups
+
+
+```{r}
+# %RDA long table (+ removing duplicates of recepies)
+
+sides_pivoted_RDA <- sides %>%
+  select(dish, type, Energy, Fat, Saturated, Carbs, Sugar, Fibre, Protein, Salt, 
+         Sodium) %>%
+  filter(dish != "Spicy BBQ Wings (14)" & dish != "Frank's Red Hot Wings (14)" &
+           dish != "Chicken Wings (14)" & dish!= "Chicken Strippers (14)" &
+           dish != "Chicken Kickers (14)" & dish != "Pop'n Chicken Double Portion" &
+           dish != "BBQ Dip 100g" & dish != "Frank's Hot Dip 100g" & 
+           dish != "Garlic and Herb Dip 100g") %>% 
+  pivot_longer(cols = c(Energy, Fat, Saturated, Carbs, Sugar, Fibre, Protein, 
+                        Salt, Sodium), 
+               names_to = "Macros", 
+               values_to = "Values")
+```
+
+
+```{r}
+# g per serving long table (+ removing duplicates of recepies) 
+
+sides_pivoted_serv <- sides %>%
+  select(dish, type, energy_kcal_serv, fat_g_serv, sat_g_serv, carb_g_serv, 
+         sugars_g_serv, fibre_g_serv, protein_g_serv, salt_g_serv, sodium_g_serv) %>%
+  filter(dish != "Spicy BBQ Wings (14)" & dish != "Frank's Red Hot Wings (14)" &
+           dish != "Chicken Wings (14)" & dish!= "Chicken Strippers (14)" &
+           dish != "Chicken Kickers (14)" & dish != "Pop'n Chicken Double Portion" &
+           dish != "BBQ Dip 100g" & dish != "Frank's Hot Dip 100g" & 
+           dish != "Garlic and Herb Dip 100g") %>% 
+  pivot_longer(cols = c(energy_kcal_serv, fat_g_serv, sat_g_serv, carb_g_serv,
+                        sugars_g_serv, fibre_g_serv, protein_g_serv, salt_g_serv,
+                        sodium_g_serv),
+               names_to = "Macros", 
+               values_to = "Values")
+```
+
+
+```{r}
+# per 100g long table (+ removing duplicates of recepies)
+
+sides_pivoted_100g <- sides %>%
+  select(dish, type, energy_kcal_100g, fat_g_100g, sat_g_100g, carb_g_100g, 
+         sugars_g_100g, fibre_g_100g, protein_g_100g, salt_g_100g, sodium_g_100g) %>%
+  filter(dish != "Spicy BBQ Wings (14)" & dish != "Frank's Red Hot Wings (14)" &
+           dish != "Chicken Wings (14)" & dish!= "Chicken Strippers (14)" &
+           dish != "Chicken Kickers (14)" & dish != "Pop'n Chicken Double Portion" &
+           dish != "BBQ Dip 100g" & dish != "Frank's Hot Dip 100g" & 
+           dish != "Garlic and Herb Dip 100g") %>% 
+  pivot_longer(cols = c(energy_kcal_100g, fat_g_100g, sat_g_100g, carb_g_100g,
+                        sugars_g_100g, fibre_g_100g, protein_g_100g, salt_g_100g,
+                        sodium_g_100g),
+               names_to = "Macros", 
+               values_to = "Values")
+  
+```
+
+
+
+
+# Exploring the Data
+
+
+## Macros for sides per 100g
+
+
+```{r}
+sides_pivoted_100g %>%
+  filter(Macros == "energy_kcal_100g") %>%
+  group_by(dish) %>%
+  summarise(calories_per_100g = Values)
+
+```
+
+```{r}
+sides_pivoted_100g %>%
+  filter(Macros == "energy_kcal_100g") %>%
+  filter(type == "side") %>%
+  ggplot() +
+  aes(reorder(x = dish, Values), y = Values) +
+  coord_flip() +
+  geom_col(fill = "darkblue", col = "white") +
+  xlab("Side Type\n") +
+  ylab("\nCalories (kcal)") +
+  ggtitle("Amount of calories per side type (per 100g)\n") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  theme(axis.title.x = element_text(size = 14)) +
+  theme(axis.title.y = element_text(size = 14))
+```
+
+*Although exploring this using macros per 100g is a good way of normalising the data for all the food types to a common baseline, it isn't really that easy for a normal person to understand as we rarely eat exactly 100g of something.  I shall therefore use the values per serving as a baseline.  And specifically use the percent of recommended daily allowance, rather than in grams, to make it easier for a person to quickly judge the nutritional value of a dish compared to their RDA.*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+sides_pivoted_RDA %>%
+  filter(type == "side") %>%
+  filter(RDA_macros == "fat_rda" | RDA_macros =="sat_rda") %>%
+  ggplot() +
+  aes(x = dish, y = RDA_values, fill = RDA_macros) +
+  geom_col(position = "dodge") +
+  coord_flip()
+```
+
