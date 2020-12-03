@@ -113,7 +113,7 @@ crust_calories %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Calories for Crust Type (per serving)\n") +
+  ggtitle("%RDA of Calories per Crust Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -137,7 +137,7 @@ crust_protein %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Protein for Crust Type (per serving)\n") +
+  ggtitle("%RDA of Protein per Crust Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -161,7 +161,7 @@ crust_fat %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Fat for Crust Type (per serving)\n") +
+  ggtitle("%RDA of Fat per Crust Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -185,7 +185,7 @@ crust_sat %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Saturated Fat for Crust Type (per serving)\n") +
+  ggtitle("%RDA of Saturated Fat per Crust Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -209,7 +209,7 @@ crust_carbs %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Carbs for Crust Type (per serving)\n") +
+  ggtitle("%RDA of Carbs per Crust Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -233,7 +233,7 @@ crust_sugar %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Sugar for Crust Type (per serving)\n") +
+  ggtitle("%RDA of Sugar per Crust Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -258,7 +258,7 @@ crust_fibre %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Fibre for Crust Type (per serving)\n") +
+  ggtitle("%RDA of Fibre per Crust Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -282,7 +282,7 @@ crust_salt %>%
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Carbs for Salt Type (per serving)\n") +
+  ggtitle("%RDA of Carbs per Salt Type (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -293,6 +293,9 @@ crust_salt %>%
 
 # Pizza Toppings
 
+
+### %RDA of Calories for pizza name
+
 ```{r}
 pizza_calories <- pizza_pivoted_RDA %>%
   filter(size == "Medium") %>%
@@ -302,12 +305,12 @@ pizza_calories <- pizza_pivoted_RDA %>%
 
 pizza_calories %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Calories for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Calories per Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -326,12 +329,12 @@ pizza_protein <- pizza_pivoted_RDA %>%
 
 pizza_protein %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Protein for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Protein per Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -350,12 +353,12 @@ pizza_fat <- pizza_pivoted_RDA %>%
 
 pizza_fat %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Fat for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Fat per Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -373,12 +376,12 @@ pizza_sat <- pizza_pivoted_RDA %>%
 
 pizza_calories %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Saturated Fat for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Saturated per for Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -397,12 +400,12 @@ pizza_carbs <- pizza_pivoted_RDA %>%
 
 pizza_carbs %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Carbs for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Carbs per Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -421,12 +424,12 @@ pizza_sugar <- pizza_pivoted_RDA %>%
 
 pizza_sugar %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Sugar for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Sugar per Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -445,12 +448,12 @@ pizza_fibre <- pizza_pivoted_RDA %>%
 
 pizza_fibre %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Fibre for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Fibre per Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
@@ -458,7 +461,7 @@ pizza_fibre %>%
 ```
 
 
-### %RDA fo salt for pizza name
+### %RDA of salt for pizza name
 
 ```{r}
 pizza_salt <- pizza_pivoted_RDA %>%
@@ -469,15 +472,16 @@ pizza_salt <- pizza_pivoted_RDA %>%
 
 pizza_salt %>%
   ggplot() +
-  aes(x = name, y = avg_percent_RDA) +
+  aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
   geom_col(fill = "darkblue", col = "white") +
   coord_flip() +
   xlab("Pizza Name\n") +
   ylab("\nRDA (%)") +
-  ggtitle("%RDA of Salt for Pizza Name (per serving)\n") +
+  ggtitle("%RDA of Salt per Pizza Name (per serving)\n") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
   theme(axis.title.y = element_text(size = 14))
 ```
+
 
