@@ -169,14 +169,14 @@ rda_fibre <- 30
 
 # creating %RDA columns for servings
 pizza_clean <- pizza_clean %>%
-  mutate(Calories = round((energy_kcal_serv / rda_kcal)*100, 1)) %>%
-  mutate(Fat = round((fat_g_serv / rda_fat)*100, 1)) %>%
-  mutate(Saturated = round((sat_g_serv / rda_sat)*100, 1)) %>%
-  mutate(Carbs = round((carb_g_serv / rda_carbs)*100, 1)) %>%
-  mutate(Sugar = round((sugars_g_serv / rda_sugar)*100, 1)) %>%
-  mutate(Fibre = round((fibre_g_serv / rda_fibre)*100, 1)) %>%
-  mutate(Protein = round((protein_g_serv / rda_protein)*100, 1)) %>%
-  mutate(Salt = round((salt_g_serv / rda_salt)*100, 1))
+  mutate(Calories = round((energy_kcal_serv / rda_kcal)*100, 0)) %>%
+  mutate(Fat = round((fat_g_serv / rda_fat)*100, 0)) %>%
+  mutate(Saturated = round((sat_g_serv / rda_sat)*100, 0)) %>%
+  mutate(Carbs = round((carb_g_serv / rda_carbs)*100, 0)) %>%
+  mutate(Sugar = round((sugars_g_serv / rda_sugar)*100, 0)) %>%
+  mutate(Fibre = round((fibre_g_serv / rda_fibre)*100, 0)) %>%
+  mutate(Protein = round((protein_g_serv / rda_protein)*100, 0)) %>%
+  mutate(Salt = round((salt_g_serv / rda_salt)*100, 0))
 
 
 # save clean data
