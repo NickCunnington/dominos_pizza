@@ -33,7 +33,7 @@ pizza_RDA <- pizza %>%
 
 
 
-##############SIDES DATA ####################
+############## SIDES DATA ####################
 
 
 # read in data
@@ -54,3 +54,50 @@ sides_RDA <- sides %>%
                         Salt), 
                names_to = "Macros", 
                values_to = "Values")
+
+
+
+
+
+
+
+  pizza_RDA %>%
+    filter(name == "American Hot" | name == "Americano") %>%
+    filter(size == "Medium") %>%
+    filter(crust == "Classic Crust") %>%
+    group_by(name) %>%
+    ggplot() +
+    aes(x = Macros, y = Values, fill = name, group = name) +
+    geom_col(position = "dodge", col = "white") +
+    geom_text(aes(label = paste0(Values, "%")), position = position_dodge(0.9), vjust = 1.5) +
+    theme_bw()
+  
+  
+  pizza1 <- pizza_RDA %>%
+    filter(name == "American Hot" & 
+             size == "Medium" & 
+             crust == "Classic Crust") %>%
+    group_by(Macros) %>%
+    summarise(pizza1 = Values)
+  
+  pizza2 <- pizza_RDA %>%
+    filter(name == "Americano" &
+             size == "Medium" &
+             crust == "Stuffed Crust") %>%
+    group_by(Macros) %>%
+    summarise(pizza2 = Values)
+  
+  pizza_compare <- pizza1 %>%
+    left_join(pizza2)
+  
+  pizza_joined <- pizza_compare %>%
+    pivot_longer(cols = c(pizza1, pizza2),
+                 names_to = "Pizza",
+                 values_to = "Values")
+  
+  pizza_joined %>%
+    ggplot() +
+    aes(x = Macros, y = Values, fill = Pizza) +
+    geom_col(position = "dodge", col = "white") +
+    geom_text(aes(label = paste0(Values, "%")), position = position_dodge(0.9), vjust = 1.5) +
+    theme_bw()
