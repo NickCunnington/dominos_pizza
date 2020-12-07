@@ -5,6 +5,9 @@ library(shiny)
 library(shinythemes)
 
 
+
+################ PIZZA DATA ###############
+
 # read in data
 pizza <- read_csv("clean_data/pizza_clean.csv")
 
@@ -24,6 +27,30 @@ pizza_RDA <- pizza %>%
          Fibre, Salt) %>%
   group_by(name, crust, size) %>%
   pivot_longer(cols = c(Calories, Protein, Fat, Saturated, Carbs, Sugar, Fibre, 
+                        Salt), 
+               names_to = "Macros", 
+               values_to = "Values")
+
+
+
+##############SIDES DATA ####################
+
+
+# read in data
+sides <- read_csv("clean_data/sides_clean.csv")
+
+
+
+# convert into long format and remove duplicates of sides that have the same RDA
+# per serving, but are a bigger version of the original
+sides_RDA <- sides %>%
+  select(dish, type, Calories, Fat, Saturated, Carbs, Sugar, Fibre, Protein, Salt) %>%
+  filter(dish != "Spicy BBQ Wings (14)" & dish != "Frank's Red Hot Wings (14)" &
+           dish != "Chicken Wings (14)" & dish!= "Chicken Strippers (14)" &
+           dish != "Chicken Kickers (14)" & dish != "Pop'n Chicken Double Portion" &
+           dish != "BBQ Dip 100g" & dish != "Frank's Hot Dip 100g" & 
+           dish != "Garlic and Herb Dip 100g") %>% 
+  pivot_longer(cols = c(Calories, Fat, Saturated, Carbs, Sugar, Fibre, Protein, 
                         Salt), 
                names_to = "Macros", 
                values_to = "Values")
