@@ -92,6 +92,7 @@ crust_calories %>%
   ggplot() +
   aes(x = crust, y = avg_percent_RDA) +
   geom_col(fill = "darkblue") +
+  geom_text(aes(label = paste0(avg_percent_RDA, "%")), hjust = 1.2, col = "white") +
   coord_flip() +
   xlab("Crust Type\n") +
   ylab("\nRDA (%)") +
@@ -99,7 +100,7 @@ crust_calories %>%
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
   theme(axis.title.x = element_text(size = 14)) +
-  theme(axis.title.y = element_text(size = 14))
+  theme(axis.title.y = element_text(size = 14)) 
 ```
 
 
