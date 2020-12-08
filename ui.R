@@ -26,21 +26,10 @@ body <- dashboardBody(
               box(title = "Select Paramaters", status = "primary",
                   solidHeader = TRUE,
                   radioButtons("type_side", label = h3("Side Type"),
-                               choices = list("Sides" = side,
-                                              "Dips" = dip,
-                                              "Wrapzz" = wrapzz,
-                                              "Dessert" = dessert)
+                               choices = sides_type)
                                ),
                   selectInput("macro_side", label = h3("Choose Macro"),
-                              choices = list("Calories" = Calories,
-                                             "Protein" = Protein,
-                                             "Fat" = Fat,
-                                             "Saturated" = Saturated,
-                                             "Carbs" = Carbs,
-                                             "Sugar" = Sugar,
-                                             "Fibre" = Fibre,
-                                             "Salt" = Salt)
-                              )
+                              choices = sides_macros)
                   ),
               
               box(title = "Information", status = "warning",
@@ -53,11 +42,11 @@ body <- dashboardBody(
             ),
             
             fluidRow(
-              width = 12,
+              box(width = 12,
               plotOutput("sides")
+              )
             )
-            
-            ),
+          ),
     
     
     
@@ -80,7 +69,6 @@ body <- dashboardBody(
             h2("Compare Pizzas Types")
             ),
     
-  )
 )
 
 
