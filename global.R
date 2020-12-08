@@ -39,6 +39,9 @@ pizza_crust <- unique(pizza_RDA$crust)
 pizza_macros <- unique(pizza_RDA$Macros)
 
 
+
+
+
 ############## SIDES DATA ####################
 
 
@@ -66,6 +69,11 @@ sides_RDA <- sides %>%
 sides_names <- unique(sides_RDA$dish)
 sides_type <- unique(sides_RDA$type)
 sides_macros <- unique(sides_RDA$Macros)
+
+
+
+
+
 
 
 
