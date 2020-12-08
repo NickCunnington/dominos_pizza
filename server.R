@@ -22,27 +22,38 @@ server <- function(input, output) {
   #     theme(axis.title.y = element_text(size = 14))
   # }
 
-  output$sides <- eventReactive(input$macro_side, input$type_side{
-    sides_RDA %>%
-      filter(Macros == input$macro_side) %>%
-      filter(type == input$type_side) %>%
-      group_by(dish) %>%
-      summarise(percent_RDA = round(Values),0) %>%
-      ggplot() +
-      aes(x = dish, y = percent_RDA) +
-      geom_col(fill = "darkblue") +
-      geom_text(aes(label = paste0(avg_percent_RDA, "%")), hjust = 1.2, col = "white") +
-      coord_flip() +
-      xlab(paste0(input$type_side, " Type\n")) +
-      ylab("\nRDA (%)") +
-      ggtitle(paste0("%RDA of ", input$macro_side, " per ,", 
-                     input$type_side, " Type (per serving)\n")) +
-      theme_bw() +
-      theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
-      theme(axis.title.x = element_text(size = 14)) +
-      theme(axis.title.y = element_text(size = 14))
-  })
   
+  output$value_macro <- renderPrint({ input$macro_side })
+  
+  output$value_type <- renderPrint({ input$type_side })
+  
+  
+  output$sides_plot <- eventReactive(input$action_side,{
+     sides_RDA %>%
+       filter(type == input$type_side) %>%
+       filter(Macros == input$macro_side) %>%
+       group_by(dish) %>%
+       summarise(percent_RDA = round(Values)) %>%
+       ggplot() +
+       aes(x = dish, y = percent_RDA) +
+       geom_col(fill = "darkblue") +
+       geom_text(aes(label = paste0(percent_RDA, "%")), hjust = 1.2, col = "white") +
+       coord_flip() +
+       xlab(paste0(input$type_side, " Type\n")) +
+       ylab("\nRDA (%)") +
+       ggtitle(paste0("%RDA of ", input$macro_side, " per ,",
+                      input$type_side, " Type (per serving)\n")) +
+       theme_bw() +
+       theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+       theme(axis.title.x = element_text(size = 14)) +
+       theme(axis.title.y = element_text(size = 14))
+    
+})
+  
+ 
+}
+    
+        
   # pizza1 <- eventReactive(input$pizza1_name, input$pizza1_crust, input$pizza1_size{
   #   
   #   pizza_RDA %>%
@@ -93,7 +104,3 @@ server <- function(input, output) {
   #     
   # })
   
-}
-  
-
-

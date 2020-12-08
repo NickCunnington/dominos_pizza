@@ -17,27 +17,37 @@ sidebar <- dashboardSidebar(
   )
 )
 
-# body <- dashboardBody()
 
 body <- dashboardBody(
   tabItems(
+    
     tabItem(tabName = "info_page",
-            h1("Information Page"), br(), br(),
+            h2("Information")
+    ),
+    
+    tabItem(tabName = "sides_page",
+            h1("Sides Menu"), 
+            br(), 
+            br(),
 
             fluidRow(
               column(width = 6,
-              box(title = "Select Paramaters", status = "primary",
-                  solidHeader = TRUE,
+              box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
                   radioButtons("type_side", label = h3("Side Type"),
                                choices = sides_type),
+                  verbatimTextOutput("value_type"),
+                  
                   selectInput("macro_side", label = h3("Choose Macro"),
-                              choices = sides_macros)
+                              choices = sides_macros),
+                  verbatimTextOutput("value_macro"),
+                  
+                  actionButton("action_side", label = "Submit")
                   )
               ),
+            
               
               column(width = 6,
-              box(title = "Information", status = "warning",
-                  solidHeader = TRUE,
+              box(title = "Information", status = "warning", solidHeader = TRUE,
                   "Choose which type of dish you would like to see information about.",
                   br(),
                   br(),
@@ -50,40 +60,25 @@ body <- dashboardBody(
             
             fluidRow(box
                      (width = 12,
-                       plotOutput("sides")
+                       plotOutput("sides_plot")
                      )
             )
-    )
+    ),
+ 
+    tabItem(tabName = "pizza_page",
+            h2("Pizzas Menu")
+            ),
+
+    tabItem(tabName = "sides_compare",
+            h2("Compare Side Dishes")
+            ),
+
+    tabItem(tanName = "pizza_compare",
+            h2("Compare Pizzas Types")
+            )
   )
 )
-            
-      
 
-
-
-#     
-#     
-#     
-#     
-#     
-#     tabItem(tabName = "sides_page",
-#             h2("Sides Menu")
-#             ),
-#     
-#     tabItem(tabName = "pizza_page",
-#             h2("Pizzas Menu")
-#             ),
-#     
-#     tabItem(tabName = "sides_compare",
-#             h2("Compare Side Dishes")
-#             ),
-#     
-#     tabItem(tanName = "pizza_compare",
-#             h2("Compare Pizzas Types")
-#             ),
-#     
-# )
-# 
 
 
 
