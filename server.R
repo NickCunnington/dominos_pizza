@@ -97,25 +97,3 @@ server <- function(input, output) {
   
 
 
-
-
-
-
-
-
-pizza_RDA %>%
-  filter(name == "American Hot" | name == "Americano") %>%
-  filter(size == "Medium") %>%
-  filter(crust == "Classic Crust") %>%
-  group_by(name) %>%
-  ggplot() +
-  aes(x = Macros, y = Values, fill = name, group = name) +
-  geom_col(position = "dodge", col = "white") +
-  geom_text(aes(label = paste0(Values, "%")), position = position_dodge(0.9), vjust = 1.5) +
-  theme_bw()
-
-
-
-
-
-
