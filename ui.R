@@ -6,9 +6,9 @@ sidebar <- dashboardSidebar(
              badgeLabel = "main", badgeColor = "green"),
     menuItem("Sides Menu", tabName = "sides_page", 
              icon = icon("user", lib = "glyphicon")),
-    menuItem("Pizza Menu", tabName = "pizza_page", 
-             icon = icon("send", lib = "glyphicon")),
     menuItem("Compare Side Dishes", tabName = "sides_compare", 
+             icon = icon("send", lib = "glyphicon")),
+    menuItem("Pizza Menu", tabName = "pizza_page", 
              icon = icon("send", lib = "glyphicon")),
     menuItem("Compare Pizza Types", tabName = "pizza_compare", 
              icon = icon("send", lib = "glyphicon")),
@@ -17,78 +17,73 @@ sidebar <- dashboardSidebar(
   )
 )
 
+# body <- dashboardBody()
+
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "info_page",
-            h2("Information Page"),
-            
+            h1("Information Page"), br(), br(),
+
             fluidRow(
+              column(width = 6,
               box(title = "Select Paramaters", status = "primary",
                   solidHeader = TRUE,
                   radioButtons("type_side", label = h3("Side Type"),
-                               choices = sides_type)
-                               ),
+                               choices = sides_type),
                   selectInput("macro_side", label = h3("Choose Macro"),
                               choices = sides_macros)
-                  ),
+                  )
+              ),
               
+              column(width = 6,
               box(title = "Information", status = "warning",
                   solidHeader = TRUE,
                   "Choose which type of dish you would like to see information about.",
                   br(),
+                  br(),
                   "Figures are given in percent of your Daily Recommended Allowance (RDA) intake.",
                   br(),
+                  br(),
                   "This is also based on per allocated serving size and not necessarily for the whole dish.")
+              )
             ),
             
-            fluidRow(
-              box(width = 12,
-              plotOutput("sides")
-              )
+            fluidRow(box
+                     (width = 12,
+                       plotOutput("sides")
+                     )
             )
-          ),
-    
-    
-    
-    
-    
-    
-    tabItem(tabName = "sides_page",
-            h2("Sides Menu")
-            ),
-    
-    tabItem(tabName = "pizza_page",
-            h2("Pizzas Menu")
-            ),
-    
-    tabItem(tabName = "sides_compare",
-            h2("Compare Side Dishes")
-            ),
-    
-    tabItem(tanName = "pizza_compare",
-            h2("Compare Pizzas Types")
-            ),
-    
+    )
+  )
 )
+            
+      
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#     
+#     
+#     
+#     
+#     
+#     tabItem(tabName = "sides_page",
+#             h2("Sides Menu")
+#             ),
+#     
+#     tabItem(tabName = "pizza_page",
+#             h2("Pizzas Menu")
+#             ),
+#     
+#     tabItem(tabName = "sides_compare",
+#             h2("Compare Side Dishes")
+#             ),
+#     
+#     tabItem(tanName = "pizza_compare",
+#             h2("Compare Pizzas Types")
+#             ),
+#     
+# )
+# 
 
 
 
