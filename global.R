@@ -121,3 +121,22 @@ sides_macros <- unique(sides_RDA$Macros)
   # 
   
   
+
+
+sides_RDA %>%
+  filter(type == "dip") %>%
+  filter(Macros == "Fat") %>%
+  group_by(dish) %>%
+  summarise(percent_RDA = round(Values)) %>%
+  ggplot() +
+  aes(x = dish, y = percent_RDA) +
+  geom_col(fill = "darkblue") 
+  # geom_text(aes(label = paste0(percent_RDA, "%")), hjust = 1.2, col = "white") +
+  # coord_flip() +
+  # xlab(" Type\n") +
+  # ylab("\nRDA (%)") +
+  # ggtitle(paste0("%RDA of per Type (per serving)\n")) +
+  # theme_bw() +
+  # theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+  # theme(axis.title.x = element_text(size = 14)) +
+  # theme(axis.title.y = element_text(size = 14))
