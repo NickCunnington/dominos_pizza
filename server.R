@@ -1,32 +1,32 @@
 
 server <- function(input, output) {
   
-  pizza_filtered <- eventReactive(input$action_pizza{
+  pizza_filtered <- eventReactive(input$action_pizza,{
     pizza_RDA %>%
       filter(size == "Medium") %>%
       filter(Macros == input$macro_pizza) %>%
-      group_by(input$type_pizza) %>%
+      group_by(name) %>%
       summarise(avg_percent_RDA = round(mean(Values),0))
 
   })
   
   
-    output$pizza_plot <- renderPlot{(
+    output$pizza_plot <- renderPlot({
       
       ggplot() +
       aes(reorder(x = input$type_pizza, avg_percent_RDA), y = avg_percent_RDA) +
       geom_col(fill = "darkblue") +
       geom_text(aes(label = paste0(avg_percent_RDA, "%")), hjust = 1.2, col = "red") +
       coord_flip() +
-      xlab(paste0(input$type_pizza, " Type\n")) +
+      xlab("Pizza Type\n") +
       ylab("\nRDA (%)") +
-      ggtitle(paste0("%RDA of ", input$macro_pizza, " per ,",
-                     input$type_pizza, " Type (per serving)\n")) +
+      ggtitle(paste0("Average %RDA of ", input$macro_pizza, " per Pizza Type (per serving)\n")) +
       theme_bw() +
-      theme(plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
-      theme(axis.title.x = element_text(size = 14)) +
-      theme(axis.title.y = element_text(size = 14))
-  )}
+      theme(plot.title = element_text(hjust = 0.5, size = 18, face = "bold")) +
+      theme(axis.title.x = element_text(size = 16)) +
+      theme(axis.title.y = element_text(size = 16)) +
+      theme(axis.text = element_text(size = 12))
+  })
 
   
   sides_filtered <- eventReactive(input$action_side,{
