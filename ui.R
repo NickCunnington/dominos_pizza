@@ -35,11 +35,9 @@ body <- dashboardBody(
               box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
                   radioButtons("type_side", label = h3("Side Type"),
                                choices = sides_type),
-                  verbatimTextOutput("value_type"),
                   
                   selectInput("macro_side", label = h3("Choose Macro"),
                               choices = sides_macros),
-                  verbatimTextOutput("value_macro"),
                   
                   actionButton("action_side", label = "Submit")
                   )
@@ -65,15 +63,50 @@ body <- dashboardBody(
             )
     ),
  
+    tabItem(tabName = "sides_compare",
+            h2("Compare Side Dishes")
+    ),
+    
     tabItem(tabName = "pizza_page",
             h2("Pizzas Menu")
             ),
+            br(), 
+            br(),
+    
+    fluidRow(
+      column(width = 6,
+             box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
+                 selectInput("macro_pizza", label = h3("Choose Macro"),
+                             choices = pizza_macros),
+                 
+                 actionButton("action_pizza", label = "Submit")
+             )
+      ),
+      
+      
+      column(width = 6,
+             box(title = "Information", status = "warning", solidHeader = TRUE,
+                 "Choose which type of pizza you would like to see information about.",
+                 br(),
+                 br(),
+                 "Figures are given in percent of your Daily Recommended Allowance (RDA) intake.",
+                 br(),
+                 br(),
+                 "For ease of comparison all these figures are based on a Medium sized pizza.",
+                 br(),
+                 br(),
+                 "%RDA is per allocated serving size, which for a medium sized pizza is only 3 slices.")
+      )
+    ),
+    
+    fluidRow(box
+             (width = 12,
+               plotOutput("sides_plot")
+             )
+    )
+  ),
 
-    tabItem(tabName = "sides_compare",
-            h2("Compare Side Dishes")
-            ),
-
-    tabItem(tanName = "pizza_compare",
+      tabItem(tanName = "pizza_compare",
             h2("Compare Pizzas Types")
             )
   )
