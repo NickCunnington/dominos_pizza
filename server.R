@@ -1,20 +1,15 @@
 
 server <- function(input, output) {
   
-  pizza_filtered <- eventReactive(input$action_pizza,{
+  
+  output$pizza_plot <- renderPlot({
     pizza_RDA %>%
       filter(size == "Medium") %>%
       filter(Macros == input$macro_pizza) %>%
       group_by(name) %>%
-      summarise(avg_percent_RDA = round(mean(Values),0))
-
-  })
-  
-  
-    output$pizza_plot <- renderPlot({
-      
+      summarise(avg_percent_RDA = round(mean(Values),0)) %>%
       ggplot() +
-      aes(reorder(x = input$type_pizza, avg_percent_RDA), y = avg_percent_RDA) +
+      aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
       geom_col(fill = "darkblue") +
       geom_text(aes(label = paste0(avg_percent_RDA, "%")), hjust = 1.2, col = "red") +
       coord_flip() +
