@@ -52,13 +52,16 @@ body <- dashboardBody(
                   "Figures are given in percent of your Daily Recommended Allowance (RDA) intake.",
                   br(),
                   br(),
-                  "This is also based on per allocated serving size and not necessarily for the whole dish.")
+                  "This is also based on per allocated serving size and not necessarily for the whole dish.",
+                  br(),
+                  br()
+                  )
               )
             ),
             
             fluidRow(box
                      (width = 12,
-                       plotOutput("sides_plot")
+                       plotOutput("sides_plot", height = 600)
                      )
             )
     ),
@@ -91,7 +94,9 @@ body <- dashboardBody(
                          "Figures are given in a percentage of your Daily Recommended Allowance (RDA) intake per serving.",
                          br(),
                          br(),
-                         "Serving size is given as 3 slices of a medium sized pizza."
+                         "Serving size is given as 3 slices of a medium sized pizza.",
+                         br(),
+                         br()
 
                          )
                      )
@@ -99,7 +104,7 @@ body <- dashboardBody(
             
             fluidRow(box
                      (width = 12,
-                       plotOutput("pizza_plot")
+                       plotOutput("pizza_plot", height = 700)
                      )
             )
             

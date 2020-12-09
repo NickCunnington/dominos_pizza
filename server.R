@@ -1,6 +1,7 @@
 
 server <- function(input, output) {
   
+  # pizza menu
   
   output$pizza_plot <- renderPlot({
     pizza_RDA %>%
@@ -10,7 +11,7 @@ server <- function(input, output) {
       summarise(avg_percent_RDA = round(mean(Values),0)) %>%
       ggplot() +
       aes(reorder(x = name, avg_percent_RDA), y = avg_percent_RDA) +
-      geom_col(fill = "darkblue") +
+      geom_col(fill = "darkblue", col = "white") +
       geom_text(aes(label = paste0(avg_percent_RDA, "%")), hjust = 1.2, col = "red") +
       coord_flip() +
       xlab("Pizza Type\n") +
@@ -23,6 +24,35 @@ server <- function(input, output) {
       theme(axis.text = element_text(size = 12))
   })
 
+  # crust type
+  
+  output$crust_plot <- renderPlot({
+    pizza_RDA %>%
+      filter(size == "Medium") %>%
+      filter(Macros == input$macro_pizza) %>%
+      group_by(crust) %>%
+      summarise(avg_percent_RDA = round(mean(Values),0)) %>%
+      ggplot() +
+      aes(reorder(x = crust, avg_percent_RDA), y = avg_percent_RDA) +
+      geom_col(fill = "darkblue", col = "white") +
+      geom_text(aes(label = paste0(avg_percent_RDA, "%")), hjust = 1.2, col = "red") +
+      coord_flip() +
+      xlab("Crust Type\n") +
+      ylab("\nRDA (%)") +
+      ggtitle(paste0("Average %RDA of ", input$macro_pizza, " per Crust Type (per serving)\n")) +
+      theme_bw() +
+      theme(plot.title = element_text(hjust = 0.5, size = 18, face = "bold")) +
+      theme(axis.title.x = element_text(size = 16)) +
+      theme(axis.title.y = element_text(size = 16)) +
+      theme(axis.text = element_text(size = 12))
+    
+  })
+  
+  
+  
+  
+  
+  # sides menu - reactive
   
   sides_filtered <- eventReactive(input$action_side,{
      sides_RDA %>%
@@ -32,6 +62,8 @@ server <- function(input, output) {
        summarise(percent_RDA = round(Values)) 
        
   })
+  
+  # sides plot
   
   output$sides_plot <- renderPlot({
     
