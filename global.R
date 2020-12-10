@@ -37,6 +37,7 @@ pizza_RDA <- pizza %>%
 pizza_names <- unique(pizza_RDA$name)
 pizza_crust <- unique(pizza_RDA$crust)
 pizza_macros <- unique(pizza_RDA$Macros)
+pizza_size <- unique(pizza_RDA$size)
 
 
 
