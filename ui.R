@@ -172,8 +172,81 @@ body <- dashboardBody(
 
 # PIZZA COMPARE PAGE
           
-      tabItem(tanName = "pizza_compare",
-            h2("Compare Pizzas Types")
+      tabItem(tabName = "pizza_compare",
+            h2("Compare Pizzas Types"),
+            br(),
+            br(),
+            
+            
+            fluidRow(
+              
+              column(width = 3,
+                     box(title = "First Pizza", status = "warning", solidHeader = TRUE,
+                         selectInput("pizza1_name", label = h3("Choose first pizza name"),
+                                     choices = pizza_names),
+                         radioButtons("pizza1_crust", label = h3("Choose first pizza crust type"),
+                                      choices = pizza_crust),
+                         radioButtons("pizza1_size", label = h3("Choose first pizza size"),
+                                      choices = pizza_size)
+                     )
+                     
+              ),
+              
+              column(width = 3,
+                     box(title = "Second Pizza", status = "warning", solidHeader = TRUE,
+                         selectInput("pizza2_name", label = h3("Choose first pizza name"),
+                                     choices = pizza_names),
+                         radioButtons("pizza2_crust", label = h3("Choose first pizza crust type"),
+                                      choices = pizza_crust),
+                         radioButtons("pizza2_size", label = h3("Choose first pizza size"),
+                                      choices = pizza_size)
+                     )
+              ),
+              
+              
+              column(width = 3,
+                     box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
+                         selectInput("macro_crust", label = h3("Choose Macro"),
+                                     choices = pizza_macros),
+                         br(),
+                         br(),
+                         actionButton("action_pizza_compare", label = "Submit Query")
+                     )
+              ),
+              
+              
+              column(width = 3,
+                     box(title = "Information", status = "warning", solidHeader = TRUE,
+                         "Choose which type of macro you would like to see information about.",
+                         br(),
+                         br(),
+                         "To make direct comparison between different crust types everything is selected as medium sized.",
+                         br(),
+                         br(),
+                         "Figures are given in a percentage of your Daily Recommended Allowance (RDA) intake per serving.",
+                         br(),
+                         br(),
+                         "Serving size is given as 3 slices of a medium sized pizza.",
+                         br(),
+                         br()
+                         
+                     )
+              )
+            )
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             )
   )
 )
