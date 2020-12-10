@@ -29,7 +29,7 @@ server <- function(input, output) {
   output$crust_plot <- renderPlot({
     pizza_RDA %>%
       filter(size == "Medium") %>%
-      filter(Macros == input$macro_pizza) %>%
+      filter(Macros == input$macro_crust) %>%
       group_by(crust) %>%
       summarise(avg_percent_RDA = round(mean(Values),0)) %>%
       ggplot() +
@@ -39,7 +39,7 @@ server <- function(input, output) {
       coord_flip() +
       xlab("Crust Type\n") +
       ylab("\nRDA (%)") +
-      ggtitle(paste0("Average %RDA of ", input$macro_pizza, " per Crust Type (per serving)\n")) +
+      ggtitle(paste0("Average %RDA of ", input$macro_crust, " per Crust Type (per serving)\n")) +
       theme_bw() +
       theme(plot.title = element_text(hjust = 0.5, size = 18, face = "bold")) +
       theme(axis.title.x = element_text(size = 16)) +
