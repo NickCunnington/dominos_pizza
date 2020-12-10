@@ -8,7 +8,9 @@ sidebar <- dashboardSidebar(
              icon = icon("user", lib = "glyphicon")),
     menuItem("Compare Side Dishes", tabName = "sides_compare", 
              icon = icon("send", lib = "glyphicon")),
-    menuItem("Pizza Menu", tabName = "pizza_page", 
+    menuItem("Crust Types", tabName = "crust_page", 
+             icon = icon("send", lib = "glyphicon")),
+    menuItem("Pizza Menu", tabName = "pizza_page",
              icon = icon("send", lib = "glyphicon")),
     menuItem("Compare Pizza Types", tabName = "pizza_compare", 
              icon = icon("send", lib = "glyphicon")),
@@ -39,7 +41,7 @@ body <- dashboardBody(
 
             fluidRow(
               column(width = 4,
-              box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
+              box(width = 14, title = "Select Paramaters", status = "primary", solidHeader = TRUE,
                   radioButtons("type_side", label = h3("Side Type"),
                                choices = sides_type),
                   
@@ -52,7 +54,7 @@ body <- dashboardBody(
             
               
               column(width = 4,
-              box(title = "Information", status = "warning", solidHeader = TRUE,
+              box(width = 14, title = "Information", status = "warning", solidHeader = TRUE,
                   "Choose which type of dish you would like to see information about.",
                   br(),
                   br(),
@@ -84,10 +86,10 @@ body <- dashboardBody(
 
 
 
-# PIZZA PAGE
+# CRUST PAGE
 
-    tabItem(tabName = "pizza_page",
-            h2("Pizzas Menu"),
+    tabItem(tabName = "crust_page",
+            h2("Crust Types"),
             br(), 
             br(),
             
@@ -95,14 +97,14 @@ body <- dashboardBody(
             
             fluidRow(
               column(width = 4,
-                     box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
+                     box(width = 14, title = "Select Paramaters", status = "primary", solidHeader = TRUE,
                          selectInput("macro_crust", label = h3("Choose Macro"),
-                                     choices = pizza_macros),
+                                     choices = pizza_macros)
                          )
                      ),
               
-              column(width = 8,
-                     box(title = "Information", status = "warning", solidHeader = TRUE,
+              column(width = 4,
+                     box(width = 14, title = "Information", status = "warning", solidHeader = TRUE,
                          "Choose which type of macro you would like to see information about.",
                          br(),
                          br(),
@@ -124,23 +126,30 @@ body <- dashboardBody(
                      (width = 12,
                        plotOutput("crust_plot", height = 500)
                      )
-            ),
-            br(), 
-            br(),
+            )
+    ),
+      
+                 
+# PIZZA PAGE
             
-                                  # pizza type
-            
+      tabItem(tabName = "pizza_page",
+              h2("Pizza Types"),
+              br(), 
+              br(),            
+
             
             fluidRow(
               column(width = 4,
-                     box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
+                     box(width = 14,title = "Select Paramaters", status = "primary", 
+                         solidHeader = TRUE,
                          selectInput("macro_pizza", label = h3("Choose Macro"),
-                                     choices = pizza_macros),
+                                     choices = pizza_macros)
                      )
               ),
               
-              column(width = 8,
-                     box(title = "Information", status = "warning", solidHeader = TRUE,
+              column(width = 4,
+                     box(width = 14, title = "Information", status = "warning", 
+                         solidHeader = TRUE,
                          "Choose which type of macro you would like to see information about.",
                          br(),
                          br(),
@@ -181,7 +190,36 @@ body <- dashboardBody(
             fluidRow(
               
               column(width = 3,
-                     box(title = "First Pizza", status = "warning", solidHeader = TRUE,
+                     box(width = 14, title = "Information", status = "warning", solidHeader = TRUE,
+                         "Select the parameters for both pizzas you wish to compare, then click SUBMIT.",
+                         br(),
+                         br(),
+                         "Be aware that not all pizza types are available in every crust variety and size.",
+                         br(),
+                         br(),
+                         "Figures as shown as percent of Recommended Daily Allowance (%RDA) per serving.",
+                         br(),
+                         br(),
+                         "Serving sizes may not consitute a whole pizza.  Specified servings sizes are given as:",
+                         br(),
+                         "* Large = 3 slices,",
+                         br(),
+                         "* Medium = 3 slices,",
+                         br(),
+                         "* Small = whole pizza,",
+                         br(),
+                         "* Personal = whole pizza."
+                         
+                     ),
+                     br(),
+                     box(width = 14, title = "Warning", status = "danger", solidHeader = TRUE,
+                         "If a red warning message about aesthetics appears below please try another crust type and/or size combination, as what you have selected is not available for that pizza."
+                     )
+                     
+              ),
+              
+              column(width = 3,
+                     box(width = 14, title = "First Pizza", status = "primary", solidHeader = TRUE,
                          selectInput("pizza1_name", label = h3("Choose first pizza name"),
                                      choices = pizza_names),
                          radioButtons("pizza1_crust", label = h3("Choose first pizza crust type"),
@@ -193,7 +231,7 @@ body <- dashboardBody(
               ),
               
               column(width = 3,
-                     box(title = "Second Pizza", status = "warning", solidHeader = TRUE,
+                     box(width = 14, title = "Second Pizza", status = "primary", solidHeader = TRUE, 
                          selectInput("pizza2_name", label = h3("Choose first pizza name"),
                                      choices = pizza_names),
                          radioButtons("pizza2_crust", label = h3("Choose first pizza crust type"),
@@ -205,52 +243,24 @@ body <- dashboardBody(
               
               
               column(width = 3,
-                     box(title = "Select Paramaters", status = "primary", solidHeader = TRUE,
-                         selectInput("macro_crust", label = h3("Choose Macro"),
-                                     choices = pizza_macros),
-                         br(),
-                         br(),
+                     box(width = 14, title = "SUBMIT", status = "success", solidHeader = TRUE,
                          actionButton("action_pizza_compare", label = "Submit Query")
                      )
-              ),
-              
-              
-              column(width = 3,
-                     box(title = "Information", status = "warning", solidHeader = TRUE,
-                         "Choose which type of macro you would like to see information about.",
-                         br(),
-                         br(),
-                         "To make direct comparison between different crust types everything is selected as medium sized.",
-                         br(),
-                         br(),
-                         "Figures are given in a percentage of your Daily Recommended Allowance (RDA) intake per serving.",
-                         br(),
-                         br(),
-                         "Serving size is given as 3 slices of a medium sized pizza.",
-                         br(),
-                         br()
-                         
-                     )
               )
+            ),
+            
+            
+      
+            fluidRow(box
+                    (width = 12, plotOutput("pizza_compare", height = 700)
+                
+                    ),
+                    
             )
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            )
+    )
+
   )
 )
-
 
 
 
