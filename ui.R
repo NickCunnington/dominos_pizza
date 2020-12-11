@@ -105,6 +105,8 @@ body <- dashboardBody(
                      br(),
                      "* Chicken Strippers = 1/2 of dish,",
                      br(),
+                     "* Chicken Strippers Combo = 1/4 of dish,",
+                     br(),
                      "* Chicken Wings = 1/2 of dish,",
                      br(),
                      "* Chicken Wings Combo = 1/4 of dish,",
@@ -131,7 +133,7 @@ body <- dashboardBody(
                      br(),
                      "* Spicy BBQ Wings = 1/2 of dish,",
                      br(),
-                     "* Twisted Dough Balls (all types) = 1/2 of dish.",
+                     "* Twisted Dough Balls (all types) = 1/2 of dish,",
                      br(),
                      "* 25g Dips (all types) = whole pot,",
                      br(),
@@ -139,23 +141,20 @@ body <- dashboardBody(
                      br(),
                      "* Desserts (all types) = 1/4 of dish."
 
-                 ),
-                 
-                 box(width = 14, title = "Warning", status = "danger", solidHeader = TRUE,
-                     "If a red warning message about aesthetics appears below, or one of your choices doesn't appear in the plot, please try another crust type and/or size combination as what you have selected is not available for that pizza."
                  )
                  
           ),
           
           column(width = 3,
                  box(width = 14, title = "Choose Sides", status = "primary", solidHeader = TRUE,
-                      selectInput("size1_name", label = h3("Choose first side name"),
+                    selectInput("size1_name", label = h3("Choose First side name"),
                                  choices = sides_names), 
-                      br(),
-                      selectInput("side2_name", label = h3("Choose second side name"),
+                    br(),
+                    selectInput("side2_name", label = h3("Choose Second side name"),
                                  choices = sides_names),
-                      br(),
-                      actionButton("action_side_compare", label = "Submit Query")
+                    br(),
+                    br(),
+                    actionButton("action_side_compare", label = "Submit Query")
                  )
           )
           
@@ -350,16 +349,6 @@ body <- dashboardBody(
 
   )
 )
-
-
-
-
-
-
-
-
-
-
 
 
 
