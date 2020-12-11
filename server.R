@@ -83,6 +83,21 @@ server <- function(input, output) {
       theme(axis.text = element_text(size = 12))
   })
  
+  # sides compare reactive
+  
+  sides_compare <- eventReactive(input$action_side_compare,{
+    
+    sides_RDA %>%
+      filter(dish == input$side1_name | dish == input$side2_name)
+  
+  })
+  
+  output$sides_df <- renderTable(sides_compare())
+    
+    
+  
+  
+  
   
   
   # pizza compare reactive
