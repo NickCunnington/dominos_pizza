@@ -80,9 +80,99 @@ body <- dashboardBody(
 # SIDES COMPARE PAGE
 
     tabItem(tabName = "sides_compare",
-            h2("Compare Side Dishes")
-    ),
- 
+            h2("Compare Side Dishes"),
+        br(),
+        br(),
+        
+        
+        fluidRow(
+          
+          column(width = 3,
+                 box(width = 14, title = "Information", status = "warning", solidHeader = TRUE,
+                     "Select the both sides you wish to compare, then click SUBMIT.",
+                     br(),
+                     br(),
+                     "Figures as shown as percent of Recommended Daily Allowance (%RDA) per serving.",
+                     br(),
+                     br(),
+                     "Serving sizes may not consitute a whole side.  Specified servings sizes are given as:",
+                     br(),
+                     "* Chick 'n' Mix = 1/2 of dish,",
+                     br(),
+                     "* Chicken Kickers = 1/2 of dish,",
+                     br(),
+                     "* Chicken Kickers Combo = 1/4 of dish,",
+                     br(),
+                     "* Chicken Strippers = 1/2 of dish,",
+                     br(),
+                     "* Chicken Wings = 1/2 of dish,",
+                     br(),
+                     "* Chicken Wings Combo = 1/4 of dish,",
+                     br(),
+                     "* Chilli Flakes = whole dish,",
+                     br(),
+                     "* Coleslaw = 1/2 of dish,",
+                     br(),
+                     "* Frank's Red Hot Wings = 1/2 of dish,",
+                     br(),
+                     "* Garlic Dippers = 1/2 of dish,",
+                     br(),
+                     "* Garlic Pizza Bread = 1/2 of dish,",
+                     br(),
+                     "* Nachos (no Jalapenos) = 1/2 of dish,",
+                     br(),
+                     "* Nachos (with Jalapenos) = 1/2 of dish,",
+                     br(),
+                     "* Pop'n Chicken = 1/2 of dish,",
+                     br(),
+                     "* Pop'n Chicken Combo = 1/4 of dish,",
+                     br(),
+                     "* Potato Wedges = 1/2 of dish,",
+                     br(),
+                     "* Spicy BBQ Wings = 1/2 of dish,",
+                     br(),
+                     "* Twisted Dough Balls (all types) = 1/2 of dish.",
+                     br(),
+                     "* 25g Dips (all types) = whole pot,",
+                     br(),
+                     "* Wrappz (all types) = whole wrap,",
+                     br(),
+                     "* Desserts (all types) = 1/4 of dish."
+
+                 ),
+                 
+                 box(width = 14, title = "Warning", status = "danger", solidHeader = TRUE,
+                     "If a red warning message about aesthetics appears below, or one of your choices doesn't appear in the plot, please try another crust type and/or size combination as what you have selected is not available for that pizza."
+                 )
+                 
+          ),
+          
+          column(width = 3,
+                 box(width = 14, title = "Choose Sides", status = "primary", solidHeader = TRUE,
+                      selectInput("size1_name", label = h3("Choose first side name"),
+                                 choices = sides_names), 
+                      br(),
+                      selectInput("side2_name", label = h3("Choose second side name"),
+                                 choices = sides_names),
+                      br(),
+                      actionButton("action_side_compare", label = "Submit Query")
+                 )
+          )
+          
+          
+          
+        ),
+        
+        
+        
+        fluidRow(box
+                 (width = 12, plotOutput("sides_compare", height = 700)
+                   
+                 )
+                 
+        )
+),
+
 
 
 
@@ -211,9 +301,8 @@ body <- dashboardBody(
                          "* Personal = whole pizza."
                          
                      ),
-                     br(),
                      box(width = 14, title = "Warning", status = "danger", solidHeader = TRUE,
-                         "If a red warning message about aesthetics appears below please try another crust type and/or size combination, as what you have selected is not available for that pizza."
+                         "If a red warning message about aesthetics appears below, or one of your choices doesn't appear in the plot, please try another crust type and/or size combination as what you have selected is not available for that pizza."
                      )
                      
               ),
@@ -254,13 +343,14 @@ body <- dashboardBody(
             fluidRow(box
                     (width = 12, plotOutput("pizza_compare", height = 700)
                 
-                    ),
+                    )
                     
             )
     )
 
   )
 )
+
 
 
 
