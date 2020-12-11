@@ -147,7 +147,7 @@ body <- dashboardBody(
           
           column(width = 3,
                  box(width = 14, title = "Choose Sides", status = "primary", solidHeader = TRUE,
-                    selectInput("size1_name", label = h3("Choose First side name"),
+                    selectInput("side1_name", label = h3("Choose First side name"),
                                  choices = sides_names), 
                     br(),
                     selectInput("side2_name", label = h3("Choose Second side name"),
@@ -162,13 +162,11 @@ body <- dashboardBody(
           
         ),
         
-        
-        
         fluidRow(box
-                 (width = 12, plotOutput("sides_compare", height = 700)
-                   
+                 (width = 12, plotOutput("sides_compare_plot", height = 700)
+
                  )
-                 
+
         )
 ),
 
@@ -212,8 +210,7 @@ body <- dashboardBody(
             ),
             
             fluidRow(box
-                     (width = 12,
-                       plotOutput("crust_plot", height = 500)
+                     (width = 12, plotOutput("crust_plot", height = 500)
                      )
             )
     ),
@@ -257,8 +254,7 @@ body <- dashboardBody(
             ),
             
             fluidRow(box
-                     (width = 12,
-                       plotOutput("pizza_plot", height = 800)
+                     (width = 12, plotOutput("pizza_plot", height = 800)
                      )
             )
             

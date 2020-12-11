@@ -92,9 +92,25 @@ server <- function(input, output) {
   
   })
   
-  output$sides_df <- renderTable(sides_compare())
+  # sides compare plot
+  
+  output$sides_compare_plot <- renderPlot({
     
-    
+      ggplot(sides_compare()) +
+      aes(x = Macros, y = Values, fill = dish) +
+      geom_col(position = "dodge", col = "white") +
+      geom_text(aes(label = paste0(Values, "%")), position = position_dodge(0.9), vjust = 1.5) +
+      xlab("\nSide Types") +
+      ylab("RDA (%)\n") +
+      ggtitle(paste0("Comparison of ", input$side1_name, "  VS.  ", input$side2_name, " (per serving)\n")) +
+      theme_bw() +
+      theme(plot.title = element_text(hjust = 0.5, size = 18, face = "bold")) +
+      theme(axis.title.x = element_text(size = 16)) +
+      theme(axis.title.y = element_text(size = 16)) +
+      theme(axis.text = element_text(size = 12)) +
+      theme(legend.text = element_text(size = 12)) +
+      theme(legend.title = element_text(size = 14))
+  })
   
   
   
