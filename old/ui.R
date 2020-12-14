@@ -1,18 +1,18 @@
 sidebar <- dashboardSidebar(
   sidebarMenu(
     menuItem("Information", tabName = "info_page", 
-             icon = icon("user", lib = "glyphicon"),
+             icon = icon("cutlery", lib = "glyphicon"),
              badgeLabel = "main", badgeColor = "green"),
     menuItem("Sides Menu", tabName = "sides_page", 
-             icon = icon("user", lib = "glyphicon")),
+             icon = icon("th-list", lib = "glyphicon")),
     menuItem("Compare Side Dishes", tabName = "sides_compare", 
-             icon = icon("send", lib = "glyphicon")),
+             icon = icon("signal", lib = "glyphicon")),
     menuItem("Crust Types", tabName = "crust_page", 
-             icon = icon("send", lib = "glyphicon")),
+             icon = icon("cd", lib = "glyphicon")),
     menuItem("Pizza Menu", tabName = "pizza_page",
-             icon = icon("send", lib = "glyphicon")),
+             icon = icon("th-list", lib = "glyphicon")),
     menuItem("Compare Pizza Types", tabName = "pizza_compare", 
-             icon = icon("send", lib = "glyphicon")),
+             icon = icon("signal", lib = "glyphicon")),
     menuItem("Source code", icon = icon("file-code-o"), 
              href = "https://github.com/NickCunnington/dominos_pizza")
   )
