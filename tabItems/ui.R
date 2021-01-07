@@ -12,9 +12,8 @@ sidebar <- dashboardSidebar(
     menuItem("Pizza Menu", tabName = "pizza_page",
              icon = icon("th-list", lib = "glyphicon")),
     menuItem("Compare Pizza Types", tabName = "pizza_compare", 
-             icon = icon("signal", lib = "glyphicon")),
-    menuItem("Source code", icon = icon("file-code-o"), 
-             href = "https://github.com/NickCunnington/dominos_pizza")
+             icon = icon("signal", lib = "glyphicon"))
+    
   )
 )
 
