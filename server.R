@@ -113,9 +113,25 @@ server <- function(input, output) {
   })
   
   
+  # sides compare reactive for datatable
   
+  sides_DT <- eventReactive(input$action_side_compare,{
+    
+    sides%>%
+      select(dish, type, energy_kcal_serv, carb_g_serv, fat_g_serv, fibre_g_serv,
+             protein_g_serv, salt_g_serv, sat_g_serv, sugars_g_serv) %>%
+      filter(dish == input$side1_name | dish == input$side2_name)
+    
+  })
+    
+
+  output$sides_DT <- DT::renderDataTable({
+    
+     sides_DT()  
+    
+  })
   
-  
+
   # pizza compare reactive
   
   pizza1 <- eventReactive(input$action_pizza_compare,{
@@ -172,6 +188,36 @@ server <- function(input, output) {
       theme(legend.title = element_text(size = 14))
 
   })
+  
+  # pizza compare reactive for datatable
 
+  pizza1_DT <- eventReactive(input$action_pizza_compare,{
+    
+    pizza%>%
+      select(name, crust, size, energy_kcal_serv, carb_g_serv, fat_g_serv, fibre_g_serv,
+             protein_g_serv, salt_g_serv, sat_g_serv, sugars_g_serv) %>%
+      filter(name == input$pizza1_name &
+               size == input$pizza1_size &
+               crust == input$pizza1_crust)
+      
+  })
+  
+  pizza2_DT <- eventReactive(input$action_pizza_compare,{
+    
+    pizza%>%
+      select(name, crust, size, energy_kcal_serv, carb_g_serv, fat_g_serv, fibre_g_serv,
+             protein_g_serv, salt_g_serv, sat_g_serv, sugars_g_serv) %>%
+      filter(name == input$pizza2_name &
+               size == input$pizza2_size &
+               crust == input$pizza2_crust)
+    
+  })
+  
+  output$pizza_compare_DT <- DT::renderDataTable({
+    
+    pizza1_DT() %>%
+      rbind(pizza2_DT())  
+    
+  })
   
 }

@@ -140,7 +140,17 @@ tabsetPanel(
                     div(class = "separator30"),   
                     plotOutput("sides_compare_plot", height = 700)
              )
-           )
+           ),
+         
+         fluidRow(
+           column(12,
+                  div(class = "separator30"),
+                  div(class = "separator30"),
+                  tags$h5("The data table below shows the actual macro figures in grams per serving portion (apart from KCal for Energy)."),
+                  div(class = "separator30"),
+                  DT::dataTableOutput("sides_DT"),
+                  div(class = "separator30"))
+         )
         
   ),
 
@@ -298,7 +308,17 @@ tabsetPanel(
                     div(class = "separator30"),   
                     plotOutput("pizza_compare", height = 700)
              )
-           )
+           ),
+         
+         fluidRow(
+           column(12,
+                  div(class = "separator30"),
+                  div(class = "separator30"),
+                  tags$h5("The data table below shows the actual macro figures in grams per serving portion (apart from KCal for Energy)."),
+                  div(class = "separator30"),
+                  DT::dataTableOutput("pizza_compare_DT"),
+                  div(class = "separator30"))
+         )
            
           
          )
