@@ -4,8 +4,6 @@ library(tidyverse)
 library(shiny)
 library(shinythemes)
 library(shinydashboard)
-library(shinydashboardPlus)
-
 
 
 ################ PIZZA DATA ###############
@@ -71,5 +69,3 @@ sides_RDA <- sides %>%
 sides_names <- unique(sides_RDA$dish)
 sides_type <- unique(sides_RDA$type)
 sides_macros <- unique(sides_RDA$Macros)
-
-
