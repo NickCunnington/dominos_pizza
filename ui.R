@@ -5,7 +5,7 @@ ui <- fluidPage(tags$head(
   theme = shinytheme("spacelab"),
 
 navbarPage(
-  title = div(img(src="pizza.png", id = "logo"), "Dominos Pizza Nutritional Information"),
+  title = div(img(src="pizza.png", id = "logo"), "Dominos Pizza Nutritional Information in the UK"),
 
 tabsetPanel(
   
@@ -323,5 +323,9 @@ tabsetPanel(
           
          )
   )
-)
+),
+
+  div(class = "separator30"),
+  tags$footer(class = "footer_text", "Produced by Nick Cunnington.  Nutritional information sourced from Dominos.co.uk"),
+  tags$div(class = "separator30")
 )
