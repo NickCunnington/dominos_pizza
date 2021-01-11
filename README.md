@@ -14,7 +14,7 @@ This project was to practice making a Dashboard using R Shiny and CSS.  It uses 
 
 ### How to use the dashboard
 
-The dashboard is hopefully reasonably self explanatory.  The 5 tabs along the top select whether you wish to see information on items the Sides or Pizza Menu.  Here you can select the nutritional macro that you are interested in.  Also there are 2 tabs where you can directly compare 2 different products from each menu in a plot and datatable format.
+The dashboard is hopefully reasonably self explanatory.  The 5 tabs along the top select whether you wish to see information on items in the Sides or Pizza Menu.  Here you can select the nutritional macro that you are interested in.  Also there are 2 tabs where you can directly compare 2 different products from each menu in a plot and datatable format.
 
 <br>
 
