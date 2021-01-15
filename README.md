@@ -27,3 +27,4 @@ All of the plots are in % of your recommended daily allowance of each particular
 <br>
 
 ![Datatable](https://github.com/NickCunnington/dominos_pizza/blob/main/www/datatable.PNG)
+
